@@ -1,0 +1,5 @@
+<resources>
+    <string name="str_commons_user_username">Username</string>
+    <string name="str_commons_user_dob">Date Of Birth</string>
+    <string name="str_commons_user_address">Address</string>
+</resources>

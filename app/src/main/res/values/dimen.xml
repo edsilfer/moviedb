@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- COMMON DIMEN RESOURCES ================================================================ -->
+    <!-- TEXT -->
+    <dimen name="textH0">24sp</dimen>
+    <dimen name="textH1">18sp</dimen>
+    <dimen name="textH2">16sp</dimen>
+    <dimen name="textH3">14sp</dimen>
+    <dimen name="textH4">12sp</dimen>
+    <dimen name="textH5">10sp</dimen>
+    <integer name="textBorderRadius">3</integer>
+    <!-- MATERIAL DESIGN BUTTONS  -->
+    <dimen name="rsc_common_button_height">60dip</dimen>
+    <!-- OTHER  -->
+    <dimen name="rsc_common_default_card_elevation">4dp</dimen>
+
+    <!-- ACTIVITIES ============================================================================ -->
+    <dimen name="rsc_character_master_height">4dp</dimen>
+
+    <!-- RESOURCES ============================================================================= -->
+
+    <!-- DIALOGS =============================================================================== -->
+
+
+</resources>

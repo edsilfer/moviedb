@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="225dip"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:padding="24dip"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/textH1"
+        android:textStyle="bold" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="24dip"
+        android:theme="@style/TextHangerDark">
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="150dip"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="10dip"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/cancel"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/str_commons_button_cancel" />
+
+        <com.gc.materialdesign.views.ButtonFlat
+            android:id="@+id/okay"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dip"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="@string/str_commons_button_okay" />
+    </LinearLayout>
+</RelativeLayout>

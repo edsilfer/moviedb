@@ -2,14 +2,16 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+// *************************************************************************************************
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "br.com.edsilfer.moviedb"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 24
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -21,18 +23,63 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
+// *************************************************************************************************
 dependencies {
+    // TEST DEPENDENCIES ===========================================================================
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    // OWN THIRD LIBRARIES =========================================================================
+    compile 'br.com.edsilfer:kiwi:1.0.14'
+
+    // GOOGLE SUPPORT LIBRARIES DEPENDENCIED =======================================================
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support:recyclerview-v7:$support_version"
     compile "com.android.support:cardview-v7:$support_version"
     compile "com.android.support:design:$support_version"
 
-    testCompile 'junit:junit:4.12'
+    // DAGGER 2 DEPENDENCIES =======================================================================
+    compile 'com.google.dagger:dagger:2.1'
+    kapt 'com.google.dagger:dagger-compiler:2.1'
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    // KOTLIN DEPENDENCIES =========================================================================
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    // ANKO DEPENDENCIES ---------------------------------------------------------------------------
+    compile "org.jetbrains.anko:anko-common:$anko_version"
+    compile "org.jetbrains.anko:anko-sdk15:$anko_version"
+    compile "org.jetbrains.anko:anko-support-v4:$anko_version"
+    compile "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+
+    // THIRD PART ==================================================================================
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.android.volley:volley:1.0.0'
+}
+
+// *************************************************************************************************
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+// *************************************************************************************************
+kapt {
+    generateStubs = true
 }

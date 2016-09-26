@@ -1,0 +1,7 @@
+<resources>
+    <string name="str_commons_button_yes">Yes</string>
+    <string name="str_commons_button_no">No</string>
+    <string name="str_commons_button_okay">Okay</string>
+    <string name="str_commons_button_cancel">Cancel</string>
+</resources>
+

@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- *************************************************************************************** -->
+    <!-- BASE INFRASTRUCTURE  -->
+    <!-- *************************************************************************************** -->
+    <string name="str_server_routes_base_protocol">https</string>
+    <string name="str_server_routes_base_url">api.themoviedb.org</string>
+    <string name="str_server_routes_base_image_url">image.tmdb.org/t/p/w500</string>
+    <string name="str_server_routes_base_api_version">3</string>
+    <string name="str_server_routes_base_api_v3">aa46f173e962dd2f43e9d2898fa98bcd</string>
+    <string name="str_server_routes_base_api_v4">
+        eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhYTQ2ZjE3M2U5NjJkZDJmNDNlOWQyODk4ZmE5OGJjZCI
+        sInN1YiI6IjU3ZTk0OTE0YzNhMzY4NmUwNjAwMDExYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.
+        QXIlFwdh3A_m_eeu8nR4bQcQtXDWrQgk2-VTmL6cC-Y
+    </string>
+
+    <!-- *************************************************************************************** -->
+    <!-- ENTITIES ============================================================================== -->
+    <string name="str_server_routes_entity_movie">movie</string>
+
+    <!-- SERVICES ============================================================================== -->
+    <string name="str_server_routes_service_search">search</string>
+    <string name="str_server_routes_service_discover">discover</string>
+    <string name="str_server_routes_service_find">find</string>
+
+    <!-- ATTRIBUTES ============================================================================ -->
+    <string name="str_server_routes_attr_api_key">api_key</string>
+    <string name="str_server_routes_attr_sort_by">sort_by</string>
+
+    <string name="str_server_routes_attr_primary_release_date">primary_release_date</string>
+    <string name="str_server_routes_attr_primary_release_date_get">primary_release_date.get</string>
+
+    <string name="str_server_routes_attr_with_genres">with_genres</string>
+    <string name="str_server_routes_attr_certification_country">certification_country</string>
+    <string name="str_server_routes_attr_certification">certification</string>
+    <string name="str_server_routes_attr_with_people">with_people</string>
+    <string name="str_server_routes_attr_primary_release_year">primary_release_year</string>
+    <string name="str_server_routes_attr_language">language</string>
+</resources>

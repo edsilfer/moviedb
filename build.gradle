@@ -1,11 +1,13 @@
 buildscript {
+    // GRADLE BUILD VARS ===========================================================================
     ext.kotlin_version = '1.0.4'
     ext.anko_version = '0.9'
-    ext.support_version = '24.0.2'
+    ext.support_version = '24.2.1'
 
     repositories {
         jcenter()
     }
+    
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.0'
         classpath 'com.google.gms:google-services:3.0.0'
