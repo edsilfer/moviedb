@@ -5,7 +5,7 @@
     <!-- *************************************************************************************** -->
     <string name="str_server_routes_base_protocol">https</string>
     <string name="str_server_routes_base_url">api.themoviedb.org</string>
-    <string name="str_server_routes_base_image_url">image.tmdb.org/t/p/w500</string>
+    <string name="str_server_routes_base_image_url">https://image.tmdb.org/t/p/w500/</string>
     <string name="str_server_routes_base_api_version">3</string>
     <string name="str_server_routes_base_api_v3">aa46f173e962dd2f43e9d2898fa98bcd</string>
     <string name="str_server_routes_base_api_v4">

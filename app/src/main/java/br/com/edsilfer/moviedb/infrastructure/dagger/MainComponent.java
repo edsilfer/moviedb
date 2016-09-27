@@ -4,8 +4,9 @@ import javax.inject.Singleton;
 
 import br.com.edsilfer.bidder.infrastructure.dagger.MainModule;
 import br.com.edsilfer.moviedb.controller.activities.ActivityHomepage;
+import br.com.edsilfer.moviedb.controller.activities.ActivityMovie;
 import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie;
-import br.com.edsilfer.moviedb.service.Postman;
+import br.com.edsilfer.moviedb.service.comm.Postman;
 import dagger.Component;
 
 /**
@@ -20,6 +21,8 @@ public interface MainComponent {
 
     // ACTIVITIES ==================================================================================
     void inject(ActivityHomepage activityHomepage);
+
+    void inject(ActivityMovie activityMovie);
 
     // ADAPTERS ====================================================================================
     void inject(AdapterMovie adapterMovie);

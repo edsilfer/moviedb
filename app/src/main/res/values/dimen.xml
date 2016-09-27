@@ -15,7 +15,7 @@
     <dimen name="rsc_common_default_card_elevation">4dp</dimen>
 
     <!-- ACTIVITIES ============================================================================ -->
-    <dimen name="rsc_character_master_height">4dp</dimen>
+    <dimen name="rsc_character_master_height">180dip</dimen>
 
     <!-- RESOURCES ============================================================================= -->
 

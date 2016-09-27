@@ -1,9 +1,9 @@
 package br.com.edsilfer.bidder.infrastructure.dagger
 
 import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
-import br.com.edsilfer.moviedb.service.MovieOffice
-import br.com.edsilfer.moviedb.service.Postman
-import br.com.edsilfer.moviedb.service.RestTemplate
+import br.com.edsilfer.moviedb.service.comm.MovieOffice
+import br.com.edsilfer.moviedb.service.comm.Postman
+import br.com.edsilfer.moviedb.service.comm.RestTemplate
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton

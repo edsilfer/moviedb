@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.service;
+package br.com.edsilfer.moviedb.service.comm;
 
 
 import android.content.Context;

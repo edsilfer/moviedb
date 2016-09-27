@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.service
+package br.com.edsilfer.moviedb.service.comm
 
 import br.com.edsilfer.moviedb.model.ResponseType
 import br.com.edsilfer.moviedb.model.ResponseWrapper
@@ -24,7 +24,7 @@ object NotificationCenter {
     // =============================================================================================
     fun notify(event: EventCatalog, response: ResponseWrapper) {
         val r = Runnable {
-            for (executor in NotificationCenter.getSubscriberList(event)!!) {
+            for (executor in getSubscriberList(event)!!) {
                 when (response.type) {
                     ResponseType.ERROR -> executor.executeOnErrorTask(response.payload!!)
                     ResponseType.SUCCESS -> executor.executeOnSuccessTask(response.payload!!)
@@ -36,7 +36,7 @@ object NotificationCenter {
 
     private fun getSubscriberList(event: EventCatalog): MutableSet<TaskExecutor>? {
         when (event) {
-            EventCatalog.e0000 -> return NotificationCenter.mSubEvent0000
+            EventCatalog.e0000 -> return mSubEvent0000
         }
         return null
     }
@@ -46,11 +46,11 @@ object NotificationCenter {
     // =============================================================================================
     object RegistrationCenter {
         fun registerForEvent(event: EventCatalog, subscriber: TaskExecutor) {
-            NotificationCenter.getSubscriberList(event)!!.add(subscriber)
+            getSubscriberList(event)!!.add(subscriber)
         }
 
         fun unregisterForEvent(event: EventCatalog, subscriber: TaskExecutor) {
-            NotificationCenter.getSubscriberList(event)!!.remove(subscriber)
+            getSubscriberList(event)!!.remove(subscriber)
         }
     }
 }

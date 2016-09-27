@@ -5,7 +5,7 @@ import android.content.Context
 import br.com.edsilfer.bidder.infrastructure.dagger.MainModule
 import br.com.edsilfer.moviedb.infrastructure.dagger.DaggerMainComponent
 import br.com.edsilfer.moviedb.infrastructure.dagger.MainComponent
-import br.com.edsilfer.moviedb.service.RestTemplate
+import br.com.edsilfer.moviedb.service.comm.RestTemplate
 
 /**
  * Created by User on 26/09/2016.

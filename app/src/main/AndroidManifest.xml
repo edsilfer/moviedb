@@ -22,5 +22,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- ACTIVITY MOVIE ==================================================================== -->
+        <activity
+            android:name=".controller.activities.ActivityMovie"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
     </application>
 </manifest>

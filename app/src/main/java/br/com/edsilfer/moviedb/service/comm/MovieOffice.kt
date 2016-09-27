@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.service
+package br.com.edsilfer.moviedb.service.comm
 
 import android.net.Uri
 import br.com.edsilfer.bidder.util.log
@@ -6,8 +6,8 @@ import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.format
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
+import br.com.edsilfer.moviedb.service.comm.RestTemplate
 import com.android.volley.Request
-import java.text.SimpleDateFormat
 import java.util.*
 
 /**
@@ -21,13 +21,13 @@ class MovieOffice(var mRequestService: RestTemplate) {
             val url = Uri.Builder().scheme(
                     App.getContext().getString(R.string.str_server_routes_base_protocol)).
                     authority(App.getContext().getString(R.string.str_server_routes_base_url)).
-                    authority(App.getContext().getString(R.string.str_server_routes_base_api_version)).
+                    appendPath(App.getContext().getString(R.string.str_server_routes_base_api_version)).
                     appendPath(App.getContext().getString(R.string.str_server_routes_service_discover)).
                     appendPath(App.getContext().getString(R.string.str_server_routes_entity_movie)).
                     appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_primary_release_date_get), Date().format("yyyy-MM-dd")).
                     appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_api_key), App.getContext().getString(R.string.str_server_routes_base_api_v3))
 
-            log("generated URL: ${url.toString()}")
+            log("generated URL: ${url}")
 
             mRequestService.setUrl(url.toString())
             // mRequestService.setPayload(payload)
