@@ -4,9 +4,13 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
+import android.transition.Slide
+import android.view.Gravity
+import android.view.MenuItem
 import br.com.edsilfer.bidder.util.customSnackbar
 import br.com.edsilfer.bidder.util.hideCircularProgressBar
 import br.com.edsilfer.bidder.util.showCircularProgressBar
+import br.com.edsilfer.bidder.util.showErrorPopUp
 import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
@@ -45,7 +49,7 @@ class ActivityHomepage : ActivityTemplate() {
 
         override fun executeOnErrorTask(payload: Any) {
             hideCircularProgressBar()
-            customSnackbar("List movies result error")
+            showErrorPopUp(R.string.str_error_list_upcoming_events)
         }
     }
 
@@ -60,6 +64,7 @@ class ActivityHomepage : ActivityTemplate() {
 
     override fun startResources() {
         super.startResources()
+        setLeftSlideAnimationForCaller()
         loadBackgroundImage(background)
         showCircularProgressBar()
         DrawerController(this).init()
@@ -76,12 +81,20 @@ class ActivityHomepage : ActivityTemplate() {
         return toolbar
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.action_search -> startActivity(Intent(this, ActivitySearchMovie::class.java))
+        }
+        return true
+    }
+
     // =============================================================================================
-    private fun loadMovies(movies: List<Movie>) {
+    private fun loadMovies(results: List<Movie>) {
         doAsync {
             val adapter = AdapterMovie(
                     this@ActivityHomepage,
-                    movies
+                    results,
+                    R.layout.rsc_util_movie_large
             )
             runOnUiThread {
                 mRecyclerViewService.initListItems(

@@ -25,7 +25,7 @@ class MainModule(private val mRequestService: RestTemplate) {
     @Provides
     @Singleton
     fun providePostman(): Postman {
-        return Postman()
+        return Postman(mRequestService)
     }
 
     @Provides

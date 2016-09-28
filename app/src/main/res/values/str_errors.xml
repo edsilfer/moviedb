@@ -1,0 +1,9 @@
+<resources>
+    <string name="str_error_list_upcoming_events">
+        Ouch! We\'re sorry but we couldn\'t fetch the upcoming results from server. Please, try again later.
+    </string>
+
+    <string name="str_error_search_movie_failed">
+        Something went wrong while trying to search for a movie. Please contact the system administrator.
+    </string>
+</resources>

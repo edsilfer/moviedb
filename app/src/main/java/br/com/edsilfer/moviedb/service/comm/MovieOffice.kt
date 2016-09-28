@@ -16,25 +16,40 @@ import java.util.*
 
 class MovieOffice(var mRequestService: RestTemplate) {
 
-    fun listMovies() {
+    fun list() {
         try {
             val url = Uri.Builder().scheme(
                     App.getContext().getString(R.string.str_server_routes_base_protocol)).
                     authority(App.getContext().getString(R.string.str_server_routes_base_url)).
                     appendPath(App.getContext().getString(R.string.str_server_routes_base_api_version)).
-                    appendPath(App.getContext().getString(R.string.str_server_routes_service_discover)).
                     appendPath(App.getContext().getString(R.string.str_server_routes_entity_movie)).
-                    appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_primary_release_date_get), Date().format("yyyy-MM-dd")).
+                    appendPath(App.getContext().getString(R.string.str_server_routes_attr_upcoming)).
                     appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_api_key), App.getContext().getString(R.string.str_server_routes_base_api_v3))
 
-            log("generated URL: ${url}")
-
             mRequestService.setUrl(url.toString())
-            // mRequestService.setPayload(payload)
-            mRequestService.setBody(EventCatalog.e0000, Request.Method.POST)
+            mRequestService.setBody(EventCatalog.e0000, Request.Method.GET)
             mRequestService.execute(App.getContext())
         } catch (e: Exception) {
-            log("Unable to list movies")
+            log("Unable to complete list movies request: ${e.message}")
+        }
+    }
+
+    fun search(query: String) {
+        try {
+            val url = Uri.Builder().scheme(
+                    App.getContext().getString(R.string.str_server_routes_base_protocol)).
+                    authority(App.getContext().getString(R.string.str_server_routes_base_url)).
+                    appendPath(App.getContext().getString(R.string.str_server_routes_base_api_version)).
+                    appendPath(App.getContext().getString(R.string.str_server_routes_service_search)).
+                    appendPath(App.getContext().getString(R.string.str_server_routes_entity_movie)).
+                    appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_query), query).
+                    appendQueryParameter(App.getContext().getString(R.string.str_server_routes_attr_api_key), App.getContext().getString(R.string.str_server_routes_base_api_v3))
+
+            mRequestService.setUrl(url.toString())
+            mRequestService.setBody(EventCatalog.e0001, Request.Method.GET)
+            mRequestService.execute(App.getContext())
+        } catch (e: Exception) {
+            log("Unable to complete search movies request: ${e.message}")
         }
     }
 }

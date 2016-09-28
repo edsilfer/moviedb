@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="10dip">
+
+
+    <RelativeLayout
+        android:id="@+id/cover_wrapper"
+        android:layout_width="@dimen/dim_act_movie_dtls_size"
+        android:layout_height="@dimen/dim_act_movie_dtls_size"
+        android:layout_marginStart="10dip">
+
+        <ImageView
+            android:id="@+id/cover"
+            android:layout_width="@dimen/dim_act_movie_dtls_size"
+            android:layout_height="@dimen/dim_act_movie_dtls_size"
+            android:layout_centerInParent="true" />
+
+        <include layout="@layout/rsc_util_movie_loading" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dip"
+        android:layout_toRightOf="@+id/cover_wrapper"
+        android:background="@android:color/transparent"
+        android:shadowColor="@color/colorTextShadowLight"
+        android:shadowRadius="@integer/textBorderRadius"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textH1"
+        android:textStyle="bold" />
+</RelativeLayout>

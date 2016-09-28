@@ -13,7 +13,7 @@ class ResponseWrapper : Serializable {
     constructor() {
     }
 
-    constructor(payload: Any, type: ResponseType) {
+    constructor(payload: Any?, type: ResponseType?) {
         this.payload = payload
         this.type = type
     }

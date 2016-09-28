@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/dim_act_homepage_character_cover_height">
+    android:layout_height="@dimen/dim_act_homepage_cover_height">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="5dip">
 
-        <ImageView
-            android:id="@+id/cover"
+
+        <RelativeLayout
+            android:id="@+id/cover_wrapper"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:transitionName="picture" />
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/cover"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true" />
+
+            <include layout="@layout/rsc_util_movie_loading" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/name"

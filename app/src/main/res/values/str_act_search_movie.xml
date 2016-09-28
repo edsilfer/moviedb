@@ -1,0 +1,5 @@
+<resources>
+    <string name="rsc_act_search_movie_result_not_found">No results found for \'XYzG$%Y78\'</string>
+    <string name="rsc_act_search_movie_hint">Type a movie title</string>
+    <string name="rsc_act_search_movie_loading">loading</string>
+</resources>

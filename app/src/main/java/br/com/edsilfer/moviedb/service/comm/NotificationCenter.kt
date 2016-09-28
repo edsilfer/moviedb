@@ -15,9 +15,10 @@ object NotificationCenter {
     // =============================================================================================
     // EVENT HOLDERS
     // =============================================================================================
-    // Event 0000: Get GCM Token
+    // Event 0000: List Movies
     private val mSubEvent0000 = HashSet<TaskExecutor>()
-
+    // Event 0001: Search Movie
+    private val mSubEvent0001 = HashSet<TaskExecutor>()
 
     // =============================================================================================
     // PUBLIC INTERFACE
@@ -26,8 +27,8 @@ object NotificationCenter {
         val r = Runnable {
             for (executor in getSubscriberList(event)!!) {
                 when (response.type) {
-                    ResponseType.ERROR -> executor.executeOnErrorTask(response.payload!!)
-                    ResponseType.SUCCESS -> executor.executeOnSuccessTask(response.payload!!)
+                    ResponseType.ERROR -> if (null != response.payload) executor.executeOnErrorTask(response.payload!!)
+                    ResponseType.SUCCESS -> if (null != response.payload) executor.executeOnSuccessTask(response.payload!!)
                 }
             }
         }
@@ -37,8 +38,8 @@ object NotificationCenter {
     private fun getSubscriberList(event: EventCatalog): MutableSet<TaskExecutor>? {
         when (event) {
             EventCatalog.e0000 -> return mSubEvent0000
+            EventCatalog.e0001 -> return mSubEvent0001
         }
-        return null
     }
 
     // =============================================================================================

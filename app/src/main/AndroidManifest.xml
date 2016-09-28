@@ -23,15 +23,21 @@
             </intent-filter>
         </activity>
 
-        <!-- ACTIVITY MOVIE ==================================================================== -->
+        <!-- ACTIVITY MOVIE DETAILS ============================================================ -->
         <activity
             android:name=".controller.activities.ActivityMovieDetails"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
 
+        <!-- ACTIVITY SEARCH MOVIE  ============================================================ -->
+        <activity
+            android:name=".controller.activities.ActivitySearchMovie"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+
         <!-- ACTIVITY ABOUT ==================================================================== -->
         <activity
-            android:name=".controllers.activities.ActivityAbout"
+            android:name=".controller.activities.ActivityAbout"
             android:screenOrientation="portrait" />
     </application>
 </manifest>

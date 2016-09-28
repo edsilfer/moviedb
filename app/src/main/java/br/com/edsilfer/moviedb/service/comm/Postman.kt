@@ -7,8 +7,7 @@ import javax.inject.Inject
 /**
  * Created by User on 26/09/2016.
  */
-
-class Postman {
+class Postman(var mRequestService: RestTemplate) {
 
     @Inject
     lateinit var mMovieOffice: MovieOffice
@@ -17,9 +16,16 @@ class Postman {
         App.component!!.inject(this)
     }
 
-    // MOVIE OFFICE ================================================================================
-    fun listMovies() {
-        mMovieOffice.listMovies()
+    fun cancelRequests() {
+        mRequestService.cancelRequests()
     }
 
+    // MOVIE OFFICE ================================================================================
+    fun listMovies() {
+        mMovieOffice.list()
+    }
+
+    fun searchMovie(query: String) {
+        mMovieOffice.search(query)
+    }
 }

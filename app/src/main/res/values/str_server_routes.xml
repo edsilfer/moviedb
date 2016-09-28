@@ -29,11 +29,12 @@
 
     <string name="str_server_routes_attr_primary_release_date">primary_release_date</string>
     <string name="str_server_routes_attr_primary_release_date_get">primary_release_date.get</string>
-
+    <string name="str_server_routes_attr_query">query</string>
     <string name="str_server_routes_attr_with_genres">with_genres</string>
     <string name="str_server_routes_attr_certification_country">certification_country</string>
     <string name="str_server_routes_attr_certification">certification</string>
     <string name="str_server_routes_attr_with_people">with_people</string>
     <string name="str_server_routes_attr_primary_release_year">primary_release_year</string>
+    <string name="str_server_routes_attr_upcoming">upcoming</string>
     <string name="str_server_routes_attr_language">language</string>
 </resources>

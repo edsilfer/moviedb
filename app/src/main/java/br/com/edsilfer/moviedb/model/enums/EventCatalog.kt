@@ -6,7 +6,9 @@ package br.com.edsilfer.moviedb.model.enums
 enum class EventCatalog private constructor(private val mValue: String?) {
 
     // Event 0000: List Movies
-    e0000("e0000");
+    e0000("e0000"),
+    // Event 0001: Search Movies
+    e0001("e0001");
 
     override fun toString(): String {
         if (this.mValue == null) {

@@ -1,6 +1,8 @@
 package br.com.edsilfer.moviedb.controller.activities
 
 import android.support.v7.widget.Toolbar
+import android.transition.Slide
+import android.view.Gravity
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
 import br.com.edsilfer.moviedb.commons.format
@@ -11,6 +13,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.act_movie_details.*
 import kotlinx.android.synthetic.main.rsc_movie_overview.*
 import kotlinx.android.synthetic.main.rsc_movie_header.*
+import org.jetbrains.anko.doAsync
 import javax.inject.Inject
 
 /**
@@ -35,12 +38,16 @@ class ActivityMovieDetails : ActivityTemplate() {
 
     override fun startResources() {
         super.startResources()
+        setLeftSlideAnimationForCalled()
         window.setBackgroundDrawable(getDrawable(R.drawable.img_background))
-        mMovie = intent.extras.getSerializable(Constants.ActivityCommunication.ATTR_MOVIE) as Movie
-        if (null == mMovie) throw IllegalArgumentException("${ActivityMovieDetails::class.simpleName} requires a Movie object to start")
-        loadMovieDetails()
-        loadOverview()
-        mPostman.listMovies()
+        doAsync {
+            mMovie = intent.extras.getSerializable(Constants.ActivityCommunication.ATTR_MOVIE) as Movie
+            if (null == mMovie) throw IllegalArgumentException("${ActivityMovieDetails::class.simpleName} requires a Movie object to start")
+            runOnUiThread {
+                loadMovieDetails()
+                loadOverview()
+            }
+        }
     }
 
     override fun getToolbar(): Toolbar? {
@@ -48,7 +55,7 @@ class ActivityMovieDetails : ActivityTemplate() {
     }
 
     override fun onNavigationClicked() {
-        finish()
+        onBackPressed()
     }
 
     // =============================================================================================

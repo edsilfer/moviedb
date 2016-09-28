@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- COMMON DIMEN RESOURCES ================================================================ -->
+    <dimen name="dim_common_loading_size">40dip</dimen>
+
     <!-- TEXT -->
     <dimen name="textH0">24sp</dimen>
     <dimen name="textH1">18sp</dimen>
@@ -15,9 +17,9 @@
     <dimen name="rsc_common_default_card_elevation">4dp</dimen>
 
     <!-- ACTIVITIES ============================================================================ -->
-    <dimen name="dim_act_homepage_character_cover_height">171dip</dimen>
-    <dimen name="dim_act_movie_dtls_character_cover_height">250dip</dimen>
-
+    <dimen name="dim_act_homepage_cover_height">171dip</dimen>
+    <dimen name="dim_act_movie_dtls_cover_height">250dip</dimen>
+    <dimen name="dim_act_movie_dtls_size">85dip</dimen>
     <!-- RESOURCES ============================================================================= -->
 
     <!-- DIALOGS =============================================================================== -->

@@ -1,10 +1,16 @@
 package br.com.edsilfer.moviedb.controller.activities
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.transition.Slide
+import android.view.Gravity
 import android.view.Menu
+import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.moviedb.R
@@ -104,11 +110,38 @@ abstract class ActivityTemplate : AppCompatActivity() {
         return null
     }
 
+    fun setLeftSlideAnimationForCalled() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val window = window
+            val slide = Slide()
+            slide.interpolator = LinearInterpolator()
+            slide.slideEdge = Gravity.RIGHT
+            slide.excludeTarget(android.R.id.statusBarBackground, true)
+            slide.excludeTarget(android.R.id.navigationBarBackground, true)
+            window.enterTransition = slide
+            window.returnTransition = slide
+            window.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+        }
+    }
+
+
+    fun setLeftSlideAnimationForCaller() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val slide = Slide()
+            slide.interpolator = LinearInterpolator()
+            slide.slideEdge = Gravity.START
+            slide.excludeTarget(android.R.id.statusBarBackground, true)
+            slide.excludeTarget(android.R.id.navigationBarBackground, true)
+            window.exitTransition = slide
+            window.reenterTransition = slide
+            window.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+        }
+    }
+
     // =============================================================================================
     private fun initToolbarBehavior() {
         val toolbar = getToolbar()
         if (null != toolbar) {
-            log("toolbar is not null")
             setSupportActionBar(toolbar)
             toolbar.setTitleTextColor(resources.getColor(R.color.colorTextLight))
             supportActionBar!!.title = mSetup!!.title
