@@ -69,7 +69,6 @@
         android:layout_marginLeft="15dip"
         android:layout_marginRight="15dip"
         android:layout_marginTop="10dip"
-        android:elevation="8dip"
         android:visibility="gone"
         card_view:cardBackgroundColor="@android:color/white"
         card_view:cardCornerRadius="5dp"

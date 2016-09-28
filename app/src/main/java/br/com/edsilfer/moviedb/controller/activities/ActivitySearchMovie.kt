@@ -119,7 +119,6 @@ class ActivitySearchMovie : ActivityTemplate() {
                 }
             }
         } else {
-            log("results < 0")
             movies.visibility = RecyclerView.GONE
             result_not_found_wrapper.visibility = CardView.VISIBLE
             result_not_found.text = result_not_found.text.toString().replace(QUERY_PLACEHOLDER, query_container.text.toString())
