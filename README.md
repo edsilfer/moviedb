@@ -1,8 +1,8 @@
 # MovieDB
 
-This application is a showcase example for an aplicatrion with the following requirements:
+This application is a showcase example for an aplication with the following requirements:
 
-FUNCTIONAL REQUIREMENTS
+**FUNCTIONAL REQUIREMENTS**
 The first release of the app will be very limited in scope, but will serve as the foundation for future releases. It's
 expected that user will be able to:
  - Scroll through the list of upcoming movies (limited to the first 50 movies) ­ including movie name, poster
@@ -10,7 +10,7 @@ image, genre and release date. This list should be ordered through re
  - Select a specific movie to see details (name, poster image, genre, overview and release date).
  - Search for movies by entering a partial or full movie name.
 
-TECHNICAL REQUIREMENTS
+**TECHNICAL REQUIREMENTS**
 You should see this project as an opportunity to create an app following modern development best practices (given
 your platform of choice), but also feel free to use your own app architecture preferences (coding standards, code
 organization, third­party libraries, etc).
