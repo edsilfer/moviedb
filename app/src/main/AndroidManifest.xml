@@ -25,8 +25,13 @@
 
         <!-- ACTIVITY MOVIE ==================================================================== -->
         <activity
-            android:name=".controller.activities.ActivityMovie"
+            android:name=".controller.activities.ActivityMovieDetails"
             android:screenOrientation="portrait"
             android:theme="@style/NoActionBar" />
+
+        <!-- ACTIVITY ABOUT ==================================================================== -->
+        <activity
+            android:name=".controllers.activities.ActivityAbout"
+            android:screenOrientation="portrait" />
     </application>
 </manifest>

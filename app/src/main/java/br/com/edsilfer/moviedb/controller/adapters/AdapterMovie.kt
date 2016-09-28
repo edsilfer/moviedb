@@ -1,5 +1,6 @@
 package br.com.edsilfer.moviedb.controller.adapters
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.commons.Constants
+import br.com.edsilfer.moviedb.controller.activities.ActivityMovieDetails
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
 import com.squareup.picasso.Picasso
@@ -34,6 +37,11 @@ class AdapterMovie(private val mActivity: AppCompatActivity, private val mDataSe
         val movie = mDataSet[position]
         setCover(holder, movie)
         setTitle(holder, movie)
+        onCoverClicked(holder, movie)
+    }
+
+    override fun getItemCount(): Int {
+        return mDataSet.size
     }
 
     // =============================================================================================
@@ -43,14 +51,18 @@ class AdapterMovie(private val mActivity: AppCompatActivity, private val mDataSe
 
     private fun setCover(holder: MovieHolder, movie: Movie) {
         Picasso.with(mActivity)
-                .load("${mActivity.getString(R.string.str_server_routes_base_image_url)}//${movie.poster_path}")
+                .load(movie.cover_url)
                 .fit()
                 .centerCrop()
                 .into(holder.cover)
     }
 
-    override fun getItemCount(): Int {
-        return mDataSet.size
+    private fun onCoverClicked(holder: MovieHolder, movie: Movie) {
+        holder.cover.setOnClickListener {
+            val intent = Intent(mActivity, ActivityMovieDetails::class.java)
+            intent.putExtra(Constants.ActivityCommunication.ATTR_MOVIE, movie)
+            mActivity.startActivity(intent)
+        }
     }
 
     // VIEW HOLDER =================================================================================

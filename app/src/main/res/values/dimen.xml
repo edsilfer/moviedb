@@ -15,11 +15,10 @@
     <dimen name="rsc_common_default_card_elevation">4dp</dimen>
 
     <!-- ACTIVITIES ============================================================================ -->
-    <dimen name="rsc_character_master_height">180dip</dimen>
+    <dimen name="dim_act_homepage_character_cover_height">171dip</dimen>
+    <dimen name="dim_act_movie_dtls_character_cover_height">250dip</dimen>
 
     <!-- RESOURCES ============================================================================= -->
 
     <!-- DIALOGS =============================================================================== -->
-
-
 </resources>

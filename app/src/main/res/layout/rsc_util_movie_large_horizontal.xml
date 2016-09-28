@@ -2,7 +2,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/rsc_character_master_height">
+    android:layout_height="@dimen/dim_act_homepage_character_cover_height">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -9,6 +9,9 @@ import android.view.MenuItem
 import android.view.View
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.format
+import com.mikepenz.aboutlibraries.Libs
+import com.mikepenz.aboutlibraries.LibsBuilder
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.act_homepage.*
 import kotlinx.android.synthetic.main.rsc_navigation_drawer_header.*
 import java.util.*
@@ -51,6 +54,7 @@ class DrawerController(var mActivity: AppCompatActivity) : NavigationView.OnNavi
                 mActivity.username.text = "Test User"
                 mActivity.dob.text = Date().format("yyyy-MM-dd")
                 mActivity.address.text = "Bentley St. N.: 458"
+                Picasso.with(mActivity).load(R.drawable.ic_male_avatar).fit().centerCrop().into(mActivity.picture)
             }
         }
 
@@ -62,10 +66,20 @@ class DrawerController(var mActivity: AppCompatActivity) : NavigationView.OnNavi
         val id = item.itemId
 
         when (id) {
+            R.id.action_about -> about()
         }
 
         val drawer = mActivity.findViewById(R.id.drawer_layout) as DrawerLayout?
         drawer!!.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun about() {
+        LibsBuilder()
+                .withActivityTitle(mActivity.getString(R.string.app_name))
+                .withAboutIconShown(true)
+                .withAboutVersionShown(true)
+                .withActivityStyle(Libs.ActivityStyle.LIGHT_DARK_TOOLBAR)
+                .start(mActivity)
     }
 }

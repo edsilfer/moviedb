@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:padding="15dip">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/vote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="votes: 4564 - score: 611"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextLight"
+                android:textSize="@dimen/textH3" />
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-5dip"
+                android:isIndicator="true"
+                android:max="4"
+                android:numStars="4"
+                android:rating="2.5"
+                android:stepSize="0.25"
+                android:theme="@style/CustomRatingBar" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dip"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Release Date"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="@dimen/textH3"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="01/01/0001"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="@dimen/textH1" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/colorTextDark"
+        android:shadowRadius="@integer/textBorderRadius"
+        android:text="Movie Name"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textH2"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adult?:"
+                android:textColor="@color/colorTextLight"
+                android:textSize="@dimen/textH4"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/adult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dip"
+                android:text="no"
+                android:textColor="@color/colorTextLight"
+                android:textSize="@dimen/textH4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popularity:"
+                android:textColor="@color/colorTextLight"
+                android:textSize="@dimen/textH4"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/popularity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dip"
+                android:text="no"
+                android:textColor="@color/colorTextLight"
+                android:textSize="@dimen/textH4" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

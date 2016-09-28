@@ -1,6 +1,9 @@
 package br.com.edsilfer.moviedb.model
 
+import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.infrastructure.App
 import com.google.gson.Gson
+import java.io.Serializable
 import java.util.*
 
 /**
@@ -24,7 +27,10 @@ data class Movie(
         var poster_path: String,
         var still_path: String,
         var include_image_language: String
-) {
+) : Serializable {
+    val cover_url: String
+        get() = "${App.getContext().getString(R.string.str_server_routes_base_image_url)}//${poster_path}"
+
     override fun toString(): String {
         return Gson().toJson(this)
     }

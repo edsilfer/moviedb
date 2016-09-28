@@ -3,5 +3,11 @@
     <string name="str_commons_button_no">No</string>
     <string name="str_commons_button_okay">Okay</string>
     <string name="str_commons_button_cancel">Cancel</string>
+
+    <string name="str_commons_lorem_ipsum">Nam quis nulla. Integer malesuada. In in enim a arcu impe
+        rdiet malesuada. Sed vel lectus. Donec odio urna, tempus molestie, porttitor ut, iaculis qui
+        s, sem. Phasellus rhoncus. Aenean id metus id velit ullamcorper pulvinar. Vestibulum ferment
+        um tortor id mi. Pellentesque ipsum. Nulla
+    </string>
 </resources>
 

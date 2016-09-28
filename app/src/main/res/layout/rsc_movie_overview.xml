@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:paddingEnd="15dip"
+    android:paddingStart="15dip">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:shadowColor="@color/colorTextDark"
+        android:shadowRadius="@integer/textBorderRadius"
+        android:text="@string/str_act_movie_dtls_label_overview"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textH1"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/movie_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dip"
+        android:text="@string/str_act_movie_dtls_txt_overview_not_found"
+        android:textColor="@color/colorTextLight"
+        android:textSize="@dimen/textH3" />
+
+</LinearLayout>

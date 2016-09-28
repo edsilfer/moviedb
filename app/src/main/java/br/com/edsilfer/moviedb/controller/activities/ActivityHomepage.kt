@@ -3,11 +3,13 @@ package br.com.edsilfer.moviedb.controller.activities
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import br.com.edsilfer.bidder.util.customSnackbar
 import br.com.edsilfer.bidder.util.hideCircularProgressBar
 import br.com.edsilfer.bidder.util.showCircularProgressBar
 import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
 import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.commons.Constants
 import br.com.edsilfer.moviedb.controller.DrawerController
 import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
@@ -70,6 +72,10 @@ class ActivityHomepage : ActivityTemplate() {
         )
     }
 
+    override fun getToolbar(): Toolbar? {
+        return toolbar
+    }
+
     // =============================================================================================
     private fun loadMovies(movies: List<Movie>) {
         doAsync {
@@ -82,13 +88,7 @@ class ActivityHomepage : ActivityTemplate() {
                         this@ActivityHomepage,
                         R.id.movies,
                         LinearLayoutManager.VERTICAL,
-                        RecyclerViewUtil.RecyclerViewOnItemClick(
-                                this@ActivityHomepage,
-                                RecyclerViewUtil.RecyclerViewOnItemClick.OnItemClickListener {
-                                    view, position ->
-                                    val intent = Intent(this@ActivityHomepage, ActivityMovie::class.java)
-                                    startActivity(intent)
-                                }),
+                        null,
                         adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
             }
         }

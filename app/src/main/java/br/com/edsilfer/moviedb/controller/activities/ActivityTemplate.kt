@@ -3,14 +3,15 @@ package br.com.edsilfer.moviedb.controller.activities
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.widget.ImageView
+import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.model.TaskExecutor
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import br.com.edsilfer.moviedb.service.comm.NotificationCenter
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.act_homepage.*
 
 /**
  * Created by edgar on 02-May-16.
@@ -20,11 +21,17 @@ abstract class ActivityTemplate : AppCompatActivity() {
     private var isRunning: Boolean? = true
     private var mSetup: ActivitySetup? = null
 
+    // PUBLIC INTERFACE ============================================================================
     abstract fun setupActivity(): ActivitySetup
+
+    abstract fun getToolbar(): Toolbar?
+
+    open fun onNavigationClicked() {
+    }
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.startResources()
+        startResources()
     }
 
     open fun startResources() {
@@ -32,9 +39,11 @@ abstract class ActivityTemplate : AppCompatActivity() {
         if (mSetup != null) {
             try {
                 setContentView(mSetup!!.contentView!!)
-                toolbar.title = mSetup!!.title
+                initToolbarBehavior()
                 registerForEvents()
             } catch (e: Exception) {
+                log("Could not start activity resources: ${e.message}")
+                e.printStackTrace()
                 startActivity(Intent(this, ActivityHomepage::class.java))
             }
         }
@@ -63,13 +72,15 @@ abstract class ActivityTemplate : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         super.onCreateOptionsMenu(menu)
-        //mSetup!!.menuFile ?: menuInflater.inflate(mSetup!!.menuFile!!, menu)
+        if (mSetup!!.menuFile != null) {
+            menuInflater.inflate(mSetup!!.menuFile!!, menu)
+        }
         return true
     }
 
     fun registerForEvents() {
         val executors = setEventHandlers()
-        if (executors!!.size > 0) {
+        if (null != executors && executors.size > 0) {
             for (event in executors.keys) {
                 NotificationCenter.RegistrationCenter.registerForEvent(event, executors[event]!!)
             }
@@ -91,5 +102,23 @@ abstract class ActivityTemplate : AppCompatActivity() {
 
     open fun setEventHandlers(): Map<EventCatalog, TaskExecutor>? {
         return null
+    }
+
+    // =============================================================================================
+    private fun initToolbarBehavior() {
+        val toolbar = getToolbar()
+        if (null != toolbar) {
+            log("toolbar is not null")
+            setSupportActionBar(toolbar)
+            toolbar.setTitleTextColor(resources.getColor(R.color.colorTextLight))
+            supportActionBar!!.title = mSetup!!.title
+            supportActionBar!!.setHomeButtonEnabled(true)
+            if (-1 != mSetup!!.toolbarIcon) toolbar.setNavigationIcon(mSetup!!.toolbarIcon)
+            toolbar.setNavigationOnClickListener {
+                onNavigationClicked()
+            }
+        } else {
+            log("toolbar is null")
+        }
     }
 }

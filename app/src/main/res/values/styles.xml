@@ -29,4 +29,10 @@
         <item name="colorControlActivated">@color/colorTextLight</item>
     </style>
 
+    <!-- OTHER ================================================================================= -->
+    <style name="CustomRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorRatingBarNormal</item>
+        <item name="colorControlActivated">@color/colorRatingBarHighlighted</item>
+    </style>
+
 </resources>

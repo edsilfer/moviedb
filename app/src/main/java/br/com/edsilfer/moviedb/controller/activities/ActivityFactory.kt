@@ -16,14 +16,14 @@ class ActivityFactory {
                 result.menuFile = R.menu.mnu_act_homepage
                 result.contentView = R.layout.act_homepage
                 result.title = App.getContext().getString(R.string.str_act_homepage_label)
-            } else if (activity is ActivityMovie) {
+                result.toolbarIcon = R.drawable.ic_menu_white_24dp
+            } else if (activity is ActivityMovieDetails) {
                 result.menuFile = R.menu.mnu_act_movie_dtls
                 result.contentView = R.layout.act_movie_details
-                result.title = App.getContext().getString(R.string.str_act_movie_dtls_label)
+                result.title = ""
+                result.toolbarIcon = R.drawable.ic_arrow_left_white_24dp
             }
-
             return result
         }
     }
-
 }

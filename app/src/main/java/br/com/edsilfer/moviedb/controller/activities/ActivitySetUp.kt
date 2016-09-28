@@ -7,4 +7,5 @@ class ActivitySetup {
     var contentView: Int? = null
     var menuFile: Int? = null
     var title: String? = null
+    var toolbarIcon: Int = -1
 }

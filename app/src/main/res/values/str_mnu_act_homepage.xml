@@ -1,0 +1,5 @@
+<resources>
+    <string name="menu_action_search">Search</string>
+
+    <string name="menu_action_about">About</string>
+</resources>

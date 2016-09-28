@@ -5,6 +5,10 @@
         android:id="@+id/menu_top"
         android:checkableBehavior="none">
 
+        <item
+            android:id="@+id/action_about"
+            android:icon="@drawable/ic_comment_multiple_outline_grey600_24dp"
+            android:title="@string/menu_action_about" />
 
     </group>
 </menu>
