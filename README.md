@@ -18,7 +18,9 @@ organization, third­party libraries, etc).
 
 Showcase
 ---
+
 <p align="center">
+  <img src="screenshots/demo.gif" align="center" width=200>
   <img src="screenshots/moviedb_ss_01.png" align="center" width=200>
   <img src="screenshots/moviedb_ss_02.png" align="center" width=200>
   <img src="screenshots/moviedb_ss_03.png" align="center" width=200>
@@ -26,6 +28,17 @@ Showcase
   <img src="screenshots/moviedb_ss_05.png" align="center" width=200>
 </p>
 
+Third-party libraries and special thanks
+---
+A full list of all third party libraries used throughout this project can be found at the About Activity present inside the App, however, a few mentions can be found below:
+
+ - **Dagger 2**: Dependency Injector for Androd and Java, used to grant one of the S.O.L.I.D. principles for OO programming (Dependency Inversion Principle). Besides allowing the high level class to not depend upon low level ones, it makes Unit Test easier to perform with the help of a mocking framework i.e. Mockito;
+ - **Gson**: Java library that can be used to convert Java Objects into their JSON representation. Used largely for consuming the payload of The Movie DB API;
+ - **Material Dialog**: Android Library for using Honeycomb (Android 3.0) animation API on all version of the platform back to 1.0;
+ - **Android Support Collection**: provided commom elements of design for build Android applications;
+ - **Volley Plus**: Android library that provide usefull task to deal with webservices;
+ - **Kotlin**: Kotlin is a statically typed language that targets the JVM and JavaScript. It is a general-purpose language intended for industry use. It is developed by a team at JetBrains although it is an OSS language and has external contributors. Besides the imports present in the App gradle file, it is required to download the plugins for Android Studio in order to compile the .kt classes and make the project work;
+ - **Anko**: Anko is a library which makes Android application development faster and easier. It makes your code clean and easy to read, and lets you forget about rough edges of Android SDK for Java.
 
  
 Code license
