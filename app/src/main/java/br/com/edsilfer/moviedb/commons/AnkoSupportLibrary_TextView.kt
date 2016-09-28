@@ -4,7 +4,8 @@ import android.text.TextUtils
 import android.widget.TextView
 
 /**
- * Created by r720929 on 01/08/2016.
+ * ANKO Support library for Any class. It extends the base class offering common services that allow
+ * s the programmer to produce a cleaner code
  */
 fun TextView.slideHorizontal() {
     ellipsize = TextUtils.TruncateAt.MARQUEE

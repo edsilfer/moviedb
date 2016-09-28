@@ -7,9 +7,8 @@ import java.io.Serializable
 import java.util.*
 
 /**
- * Created by User on 26/09/2016.
+ * Dictionary (data class) for Movie entity commonly traffic as payload of the API
  */
-
 data class Movie(
         var adult: Boolean,
         var overview: String,

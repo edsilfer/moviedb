@@ -8,10 +8,11 @@ import br.com.edsilfer.moviedb.infrastructure.dagger.MainComponent
 import br.com.edsilfer.moviedb.service.comm.RestTemplate
 
 /**
- * Created by User on 26/09/2016.
+ * High level class that provides wide context object for accessing app resource as well as starting
+ * app level resources
  */
-
 class App : Application() {
+    // STATIC ACCESSORS ============================================================================
     companion object {
         private var mApp: App? = null
         private var mComponent: MainComponent? = null
@@ -30,7 +31,7 @@ class App : Application() {
         }
     }
 
-
+    // LIFECYCLE ===================================================================================
     override fun onCreate() {
         super.onCreate()
         mApp = this

@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.model;
+package br.com.edsilfer.moviedb.model.enums;
 
 /**
  * Created by edgar on 17/02/2016.

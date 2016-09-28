@@ -10,7 +10,7 @@ import br.com.edsilfer.moviedb.R;
 
 
 /**
- * Created by User on 11/09/2016.
+ * Provides the binding methods for About Activity layout elements
  */
 public class ActivityAbout extends LibsActivity {
 

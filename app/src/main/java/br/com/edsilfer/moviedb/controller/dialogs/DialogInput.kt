@@ -12,7 +12,7 @@ import br.com.gogame.view.layouts.CustomDialog
 import com.gc.materialdesign.views.ButtonFlat
 
 /**
- * Created by r720929 on 02/08/2016.
+ * Provides the binding methods for a common Input Dialog interface, used in Anko Support libraries
  */
 class DialogInput(var mActivity: AppCompatActivity) {
 

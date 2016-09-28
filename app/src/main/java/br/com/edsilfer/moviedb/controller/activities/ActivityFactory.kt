@@ -4,12 +4,11 @@ import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.infrastructure.App
 
 /**
- * Created by User on 27/09/2016.
+ * Class responsible for initialize the base attributes for all activities (Factory Pattern)
  */
-
 class ActivityFactory {
     companion object {
-        fun getActivitySetup(activity: Any): ActivitySetup {
+        fun getInstance(activity: Any): ActivitySetup {
             val result = ActivitySetup()
 
             when (activity) {

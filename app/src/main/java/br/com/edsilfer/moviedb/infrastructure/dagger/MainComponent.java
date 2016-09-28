@@ -11,7 +11,7 @@ import br.com.edsilfer.moviedb.service.comm.Postman;
 import dagger.Component;
 
 /**
- * Created by edgar on 09-May-16.
+ * Inject the instance of the annotated parties
  */
 @Singleton
 @Component(

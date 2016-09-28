@@ -11,8 +11,10 @@ import com.squareup.picasso.Picasso
 import com.wang.avi.AVLoadingIndicatorView
 import org.jetbrains.anko.find
 
-/* Android v4 support library */
-
+/**
+ * ANKO Support library for Any class. It extends the base class offering common services that allow
+ * s the programmer to produce a cleaner code
+ */
 fun View.snackbar(text: CharSequence, duration: Int = Snackbar.LENGTH_SHORT, init: Snackbar.() -> Unit = {}): Snackbar {
     val snack = Snackbar.make(this, text, duration)
     snack.init()

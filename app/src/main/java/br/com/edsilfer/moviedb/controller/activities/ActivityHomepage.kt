@@ -4,16 +4,12 @@ import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
-import android.transition.Slide
-import android.view.Gravity
 import android.view.MenuItem
-import br.com.edsilfer.bidder.util.customSnackbar
 import br.com.edsilfer.bidder.util.hideCircularProgressBar
 import br.com.edsilfer.bidder.util.showCircularProgressBar
 import br.com.edsilfer.bidder.util.showErrorPopUp
 import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.commons.Constants
 import br.com.edsilfer.moviedb.controller.DrawerController
 import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
@@ -29,16 +25,14 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 /**
- * Created by User on 26/09/2016.
+ * Provides the binding methods for About Activity layout elements
  */
-
 class ActivityHomepage : ActivityTemplate() {
 
     @Inject
     lateinit var mPostman: Postman
     @Inject
     lateinit var mRecyclerViewService: RecyclerViewUtil
-
 
     // NETWORK EVENTS ==============================================================================
     val event0000Handler = object : TaskExecutor {
@@ -59,7 +53,7 @@ class ActivityHomepage : ActivityTemplate() {
     }
 
     override fun setupActivity(): ActivitySetup {
-        return ActivityFactory.getActivitySetup(this)
+        return ActivityFactory.getInstance(this)
     }
 
     override fun startResources() {

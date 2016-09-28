@@ -12,15 +12,15 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
-import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.model.TaskExecutor
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import br.com.edsilfer.moviedb.service.comm.NotificationCenter
 import com.squareup.picasso.Picasso
 
 /**
- * Created by edgar on 02-May-16.
+ * Activity that implement common process for all Activities of the App, providing them through inheritance
  */
 abstract class ActivityTemplate : AppCompatActivity() {
 

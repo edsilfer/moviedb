@@ -1,5 +1,6 @@
 package br.com.edsilfer.moviedb.model
 
+import br.com.edsilfer.moviedb.model.enums.ResponseType
 import java.io.Serializable
 
 /**

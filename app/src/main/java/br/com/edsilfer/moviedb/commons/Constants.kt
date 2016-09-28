@@ -1,9 +1,8 @@
 package br.com.edsilfer.moviedb.commons
 
 /**
- * Created by User on 27/09/2016.
+ * Class responsible for holding all constants to be used through the App.
  */
-
 class Constants {
     object ActivityCommunication {
         val ATTR_MOVIE = "MOVIE"

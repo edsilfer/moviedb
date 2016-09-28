@@ -4,9 +4,9 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 /**
- * Created by User on 26/09/2016.
+ * ANKO Support library for Any class. It extends the base class offering common services that allow
+ * s the programmer to produce a cleaner code
  */
-
 fun Date.format(pattern: String): String {
     var formatter = SimpleDateFormat(pattern)
     return formatter.format(this)

@@ -9,11 +9,11 @@ import android.text.TextWatcher
 import android.transition.Slide
 import android.view.Gravity
 import br.com.edsilfer.bidder.util.hideIndeterminateProgressBar
-import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.bidder.util.showErrorPopUp
 import br.com.edsilfer.bidder.util.showIndeterminateProgressBar
 import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
 import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.JSONContract
@@ -29,9 +29,8 @@ import org.json.JSONObject
 import javax.inject.Inject
 
 /**
- * Created by User on 28/09/2016.
+ * Provides the binding methods for Search Movie Activity layout elements
  */
-
 class ActivitySearchMovie : ActivityTemplate() {
 
     companion object {
@@ -72,7 +71,7 @@ class ActivitySearchMovie : ActivityTemplate() {
     }
 
     override fun setupActivity(): ActivitySetup {
-        return ActivityFactory.getActivitySetup(this)
+        return ActivityFactory.getInstance(this)
     }
 
     override fun getToolbar(): Toolbar? {

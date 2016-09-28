@@ -1,26 +1,27 @@
 package br.com.edsilfer.moviedb.service.comm
 
-import android.graphics.Movie
 import br.com.edsilfer.moviedb.infrastructure.App
 import javax.inject.Inject
 
 /**
- * Created by User on 26/09/2016.
+ * Delegates the application calls to the corresponding executors
  */
 class Postman(var mRequestService: RestTemplate) {
 
     @Inject
     lateinit var mMovieOffice: MovieOffice
 
+    // LIFECYCLE ===================================================================================
     init {
         App.component!!.inject(this)
     }
 
+    // PUBLIC INTERFACE ============================================================================
     fun cancelRequests() {
         mRequestService.cancelRequests()
     }
 
-    // MOVIE OFFICE ================================================================================
+    // MOVIE OFFICE --------------------------------------------------------------------------------
     fun listMovies() {
         mMovieOffice.list()
     }

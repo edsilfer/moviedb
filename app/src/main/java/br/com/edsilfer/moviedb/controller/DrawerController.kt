@@ -17,14 +17,14 @@ import kotlinx.android.synthetic.main.rsc_navigation_drawer_header.*
 import java.util.*
 
 /**
- * Created by User on 26/09/2016.
+ * Handles DrawerController related method, including the menu action
  */
-
 class DrawerController(var mActivity: AppCompatActivity) : NavigationView.OnNavigationItemSelectedListener {
 
     private val mDrawerLayout: DrawerLayout
     private val mNavigationView: NavigationView
 
+    // LIFECYCLE ===================================================================================
     init {
         mDrawerLayout = mActivity.findViewById(R.id.drawer_layout) as DrawerLayout
         mNavigationView = mActivity.findViewById(R.id.nav_view) as NavigationView
@@ -66,7 +66,7 @@ class DrawerController(var mActivity: AppCompatActivity) : NavigationView.OnNavi
         val id = item.itemId
 
         when (id) {
-            R.id.action_about -> about()
+            R.id.action_about -> openAbout()
         }
 
         val drawer = mActivity.findViewById(R.id.drawer_layout) as DrawerLayout?
@@ -74,7 +74,8 @@ class DrawerController(var mActivity: AppCompatActivity) : NavigationView.OnNavi
         return true
     }
 
-    private fun about() {
+    // =============================================================================================
+    private fun openAbout() {
         LibsBuilder()
                 .withActivityTitle(mActivity.getString(R.string.app_name))
                 .withAboutIconShown(true)

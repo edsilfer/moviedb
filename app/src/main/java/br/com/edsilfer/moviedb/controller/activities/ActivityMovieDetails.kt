@@ -1,8 +1,6 @@
 package br.com.edsilfer.moviedb.controller.activities
 
 import android.support.v7.widget.Toolbar
-import android.transition.Slide
-import android.view.Gravity
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
 import br.com.edsilfer.moviedb.commons.format
@@ -11,8 +9,8 @@ import br.com.edsilfer.moviedb.model.Movie
 import br.com.edsilfer.moviedb.service.comm.Postman
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.act_movie_details.*
-import kotlinx.android.synthetic.main.rsc_movie_overview.*
 import kotlinx.android.synthetic.main.rsc_movie_header.*
+import kotlinx.android.synthetic.main.rsc_movie_overview.*
 import org.jetbrains.anko.doAsync
 import javax.inject.Inject
 
@@ -33,7 +31,7 @@ class ActivityMovieDetails : ActivityTemplate() {
     }
 
     override fun setupActivity(): ActivitySetup {
-        return ActivityFactory.getActivitySetup(this)
+        return ActivityFactory.getInstance(this)
     }
 
     override fun startResources() {

@@ -1,28 +1,23 @@
 package br.com.edsilfer.moviedb.service.comm
 
-import br.com.edsilfer.moviedb.model.ResponseType
+import br.com.edsilfer.moviedb.model.enums.ResponseType
 import br.com.edsilfer.moviedb.model.ResponseWrapper
 import br.com.edsilfer.moviedb.model.TaskExecutor
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import java.util.*
 
-
 /**
- * Created by edgar on 17/02/2016.
+ * Bus that receives all notification events of watched objects. Compounds the Observer with bus Design Pattern
  */
 object NotificationCenter {
 
-    // =============================================================================================
-    // EVENT HOLDERS
-    // =============================================================================================
+    // EVENT HOLDERS ===============================================================================
     // Event 0000: List Movies
     private val mSubEvent0000 = HashSet<TaskExecutor>()
     // Event 0001: Search Movie
     private val mSubEvent0001 = HashSet<TaskExecutor>()
 
-    // =============================================================================================
-    // PUBLIC INTERFACE
-    // =============================================================================================
+    // PUBLIC INTERFACE ============================================================================
     fun notify(event: EventCatalog, response: ResponseWrapper) {
         val r = Runnable {
             for (executor in getSubscriberList(event)!!) {
@@ -35,6 +30,7 @@ object NotificationCenter {
         Thread(r).start()
     }
 
+    // =============================================================================================
     private fun getSubscriberList(event: EventCatalog): MutableSet<TaskExecutor>? {
         when (event) {
             EventCatalog.e0000 -> return mSubEvent0000
@@ -42,9 +38,7 @@ object NotificationCenter {
         }
     }
 
-    // =============================================================================================
-    // REGISTRATION INTERFACE
-    // =============================================================================================
+    // REGISTRATION INTERFACE ----------------------------------------------------------------------
     object RegistrationCenter {
         fun registerForEvent(event: EventCatalog, subscriber: TaskExecutor) {
             getSubscriberList(event)!!.add(subscriber)

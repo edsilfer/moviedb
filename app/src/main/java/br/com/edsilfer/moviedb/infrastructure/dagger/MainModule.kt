@@ -9,7 +9,7 @@ import dagger.Provides
 import javax.inject.Singleton
 
 /**
- * Created by r720929 on 14/06/2016.
+ * Provides the instantiation for the managed classes of dagger 2
  */
 @Module
 class MainModule(private val mRequestService: RestTemplate) {

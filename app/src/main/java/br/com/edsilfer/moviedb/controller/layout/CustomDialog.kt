@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 
 /**
- * Created by r720929 on 28/07/2016.
+ * Util class responsible for handling the size of the recently opened Dialog
  */
 class CustomDialog(context: Context, val callback: (height: Int, width: Int) -> Unit) : Dialog(context) {
 

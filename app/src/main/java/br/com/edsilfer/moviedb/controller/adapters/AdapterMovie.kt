@@ -10,20 +10,21 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import br.com.edsilfer.bidder.util.log
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
+import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.controller.activities.ActivityMovieDetails
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
 import com.squareup.picasso.Picasso
-import javax.inject.Inject
 
 /**
- * Created by User on 26/09/2016.
+ * Provides the binding methods for movie elements, either small or large, displayed inside a list
  */
-
-class AdapterMovie(private val mActivity: AppCompatActivity, private val mDataSet: List<Movie>, private val mLayout: Int) : RecyclerView.Adapter<AdapterMovie.MovieHolder>() {
+class AdapterMovie(
+        private val mActivity: AppCompatActivity,
+        private val mDataSet: List<Movie>,
+        private val mLayout: Int) : RecyclerView.Adapter<AdapterMovie.MovieHolder>() {
 
     // LIFECYCLE ===================================================================================
     init {

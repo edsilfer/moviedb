@@ -2,7 +2,6 @@ package br.com.edsilfer.bidder.util
 
 import android.support.v7.app.AppCompatActivity
 import android.text.Html
-import android.util.Log
 import android.util.TypedValue
 import br.com.edsilfer.kiwi.commons.Constants
 import br.com.edsilfer.moviedb.R
@@ -11,9 +10,9 @@ import com.afollestad.materialdialogs.MaterialDialog
 import com.gc.materialdesign.views.ProgressBarIndeterminate
 
 /**
- * Created by edgar on 02/08/16.
+ * ANKO Support library for AppCompatActivity class. It extends the base class offering common servi
+ * ces that allows the programmer to produce a cleaner code
  */
-
 // ENUNS ===========================================================================================
 enum class DisplayContainer {DIALOG, SNACKBAR }
 
@@ -178,9 +177,4 @@ fun AppCompatActivity.hideIndeterminateProgressBar() {
 }
 
 // OTHER ===========================================================================================
-fun Any.log(content: String, level: LogLevel = LogLevel.WARNING) {
-    when (level) {
-        LogLevel.ERROR -> Log.e("TAG", content)
-        LogLevel.WARNING -> Log.i("TAG", content)
-    }
-}
+

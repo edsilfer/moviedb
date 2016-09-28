@@ -1,7 +1,7 @@
 package br.com.edsilfer.moviedb.controller.activities
 
 /**
- * Created by edgar on 08-May-16.
+ * Dictionary (data class) that holds the initial state for an Activity
  */
 class ActivitySetup {
     var contentView: Int? = null
