@@ -11,9 +11,6 @@ class ResponseWrapper : Serializable {
     var type: ResponseType? = null
     var payload: Any? = null
 
-    constructor() {
-    }
-
     constructor(payload: Any?, type: ResponseType?) {
         this.payload = payload
         this.type = type
