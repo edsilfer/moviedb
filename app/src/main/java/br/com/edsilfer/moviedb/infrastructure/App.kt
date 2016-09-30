@@ -21,7 +21,13 @@ class App : Application() {
             get() = mApp
 
         val component: MainComponent?
-            get() = mComponent
+            get() {
+                if (null == mComponent) {
+                    return DaggerMainComponent.builder().mainModule(MainModule(RestTemplate())).build()
+                } else {
+                    return mComponent
+                }
+            }
 
         fun getContext(): Context {
             if (mApp == null) {

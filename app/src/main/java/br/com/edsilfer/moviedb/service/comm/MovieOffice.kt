@@ -1,6 +1,7 @@
 package br.com.edsilfer.moviedb.service.comm
 
 import android.net.Uri
+import android.util.Log
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.infrastructure.App
@@ -10,7 +11,7 @@ import com.android.volley.Request
 /**
  * Responsible to manage all API calls related to the Movie entity
  */
-class MovieOffice(var mRequestService: RestTemplate) {
+open class MovieOffice(var mRequestService: RestTemplate) {
 
     // PUBLIC INTERFACE ============================================================================
     fun list() {
@@ -21,7 +22,7 @@ class MovieOffice(var mRequestService: RestTemplate) {
                     getListMoviesURL()
             )
         } catch (e: Exception) {
-            log("Unable to complete list movies request: ${e.message}")
+            Log.e(MovieOffice::class.simpleName, "Unable to complete list movies request: ${e.message}")
         }
     }
 
@@ -33,7 +34,7 @@ class MovieOffice(var mRequestService: RestTemplate) {
                     getSearchMovieURL(query)
             )
         } catch (e: Exception) {
-            log("Unable to complete search movies request: ${e.message}")
+            Log.e(MovieOffice::class.simpleName, "Unable to complete search movies request: ${e.message}")
         }
     }
 

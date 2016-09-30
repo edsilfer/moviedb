@@ -18,7 +18,7 @@ import br.com.edsilfer.moviedb.model.enums.EventCatalog
 /**
  * Handles common methods related to the assembly of a REST call
  */
-class RestTemplate {
+open class RestTemplate {
 
     private var mUrl: String? = null
     private var mPayload: JSONObject? = null
