@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.controller.adapters
+package br.com.edsilfer.moviedb.presenter.adapters
 
 import android.app.ActivityOptions
 import android.content.Intent
@@ -10,10 +10,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import br.com.edsilfer.kotlin_support.service.log
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
-import br.com.edsilfer.moviedb.commons.log
-import br.com.edsilfer.moviedb.controller.activities.ActivityMovieDetails
+import br.com.edsilfer.moviedb.presenter.activities.ActivityMovieDetails
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
 import com.squareup.picasso.Picasso

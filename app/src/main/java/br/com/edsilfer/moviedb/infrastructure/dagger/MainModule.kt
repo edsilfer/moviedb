@@ -1,6 +1,5 @@
 package br.com.edsilfer.bidder.infrastructure.dagger
 
-import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
 import br.com.edsilfer.moviedb.service.comm.MovieOffice
 import br.com.edsilfer.moviedb.service.comm.Postman
 import br.com.edsilfer.moviedb.service.comm.RestTemplate
@@ -13,13 +12,6 @@ import javax.inject.Singleton
  */
 @Module
 class MainModule(private val mRequestService: RestTemplate) {
-
-    // CONTROLLERS PROVIDERS =======================================================================
-    @Provides
-    @Singleton
-    fun provideRecyclerViewUtil(): RecyclerViewUtil {
-        return RecyclerViewUtil()
-    }
 
     // COMM OFFICES ================================================================================
     @Provides

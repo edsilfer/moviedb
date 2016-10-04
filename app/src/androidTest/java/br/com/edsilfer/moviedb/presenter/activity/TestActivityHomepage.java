@@ -1,26 +1,19 @@
-package br.com.edsilfer.moviedb.controller.activity;
+package br.com.edsilfer.moviedb.presenter.activity;
 
 import android.os.Handler;
 import android.os.Looper;
-import android.support.test.espresso.UiController;
-import android.support.test.espresso.ViewAction;
-import android.support.test.espresso.contrib.RecyclerViewActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.View;
 
-import org.hamcrest.Matcher;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import br.com.edsilfer.moviedb.R;
-import br.com.edsilfer.moviedb.controller.activities.ActivityHomepage;
+import br.com.edsilfer.moviedb.presenter.activities.ActivityHomepage;
 
-import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 

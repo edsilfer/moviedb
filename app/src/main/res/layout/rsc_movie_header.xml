@@ -19,7 +19,6 @@
                 android:id="@+id/vote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="votes: 4564 - score: 611"
                 android:textAlignment="center"
                 android:textColor="@color/colorTextLight"
                 android:textSize="@dimen/textH3" />
@@ -55,7 +54,6 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Release Date"
                     android:textColor="@color/colorTextLight"
                     android:textSize="@dimen/textH3"
                     android:textStyle="bold" />
@@ -64,7 +62,6 @@
                     android:id="@+id/release_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="01/01/0001"
                     android:textColor="@color/colorTextLight"
                     android:textSize="@dimen/textH1" />
             </LinearLayout>
@@ -77,7 +74,6 @@
         android:layout_height="wrap_content"
         android:shadowColor="@color/colorTextDark"
         android:shadowRadius="@integer/textBorderRadius"
-        android:text="Movie Name"
         android:textColor="@color/colorTextLight"
         android:textSize="@dimen/textH2"
         android:textStyle="bold" />
@@ -85,7 +81,6 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:orientation="vertical">
 
         <LinearLayout
@@ -96,7 +91,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Adult?:"
                 android:textColor="@color/colorTextLight"
                 android:textSize="@dimen/textH4"
                 android:textStyle="bold" />
@@ -106,7 +100,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dip"
-                android:text="no"
                 android:textColor="@color/colorTextLight"
                 android:textSize="@dimen/textH4" />
         </LinearLayout>
@@ -119,7 +112,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Popularity:"
                 android:textColor="@color/colorTextLight"
                 android:textSize="@dimen/textH4"
                 android:textStyle="bold" />
@@ -129,7 +121,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dip"
-                android:text="no"
                 android:textColor="@color/colorTextLight"
                 android:textSize="@dimen/textH4" />
         </LinearLayout>

@@ -3,7 +3,6 @@ package br.com.edsilfer.moviedb.service.comm
 import android.net.Uri
 import android.util.Log
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import com.android.volley.Request

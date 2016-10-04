@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.controller.activities
+package br.com.edsilfer.moviedb.presenter.activities
 
 import android.content.Intent
 import android.graphics.Color
@@ -12,8 +12,8 @@ import android.view.Gravity
 import android.view.Menu
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
+import br.com.edsilfer.kotlin_support.service.log
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.commons.log
 import br.com.edsilfer.moviedb.model.TaskExecutor
 import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import br.com.edsilfer.moviedb.service.comm.NotificationCenter

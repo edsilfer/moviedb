@@ -1,9 +1,9 @@
-package br.com.edsilfer.moviedb.controller.activities
+package br.com.edsilfer.moviedb.presenter.activities
 
 import android.support.v7.widget.Toolbar
+import br.com.edsilfer.kotlin_support.service.format
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
-import br.com.edsilfer.moviedb.commons.format
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
 import br.com.edsilfer.moviedb.service.comm.Postman

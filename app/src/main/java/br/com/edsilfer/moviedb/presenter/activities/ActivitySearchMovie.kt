@@ -1,5 +1,6 @@
-package br.com.edsilfer.moviedb.controller.activities
+package br.com.edsilfer.moviedb.presenter.activities
 
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.CardView
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -8,13 +9,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.transition.Slide
 import android.view.Gravity
-import br.com.edsilfer.bidder.util.hideIndeterminateProgressBar
-import br.com.edsilfer.bidder.util.showErrorPopUp
-import br.com.edsilfer.bidder.util.showIndeterminateProgressBar
-import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
+import br.com.edsilfer.kotlin_support.service.*
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.commons.log
-import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie
+import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.JSONContract
 import br.com.edsilfer.moviedb.model.Movie
@@ -39,8 +36,6 @@ class ActivitySearchMovie : ActivityTemplate() {
 
     @Inject
     lateinit var mPostman: Postman
-    @Inject
-    lateinit var mRecyclerViewService: RecyclerViewUtil
 
     // NETWORK EVENTS ==============================================================================
     val event0001Handler = object : TaskExecutor {
@@ -65,7 +60,6 @@ class ActivitySearchMovie : ActivityTemplate() {
 
     override fun startResources() {
         super.startResources()
-        window.exitTransition = Slide(Gravity.RIGHT)
         loadBackground()
         setQueryListener()
     }
@@ -107,11 +101,11 @@ class ActivitySearchMovie : ActivityTemplate() {
                         results,
                         R.layout.rsc_util_movie_small
                 )
+
                 runOnUiThread {
                     result_not_found_wrapper.visibility = CardView.GONE
-                    mRecyclerViewService.initListItems(
-                            this@ActivitySearchMovie,
-                            R.id.movies,
+                    movies.initListItems(
+                            this@ActivitySearchMovie as AppCompatActivity,
                             LinearLayoutManager.VERTICAL,
                             null,
                             adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)

@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.controller.activities;
+package br.com.edsilfer.moviedb.presenter.activities;
 
 import android.os.Bundle;
 

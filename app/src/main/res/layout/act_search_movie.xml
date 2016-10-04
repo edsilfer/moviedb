@@ -44,7 +44,7 @@
             </android.support.design.widget.TextInputLayout>
         </android.support.v7.widget.Toolbar>
 
-        <br.com.edsilfer.kiwi.loading.LineProgressBar
+        <br.com.edsilfer.kotlin_support.controller.layout.LineProgressBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:colorLine="@color/colorTextLight" />

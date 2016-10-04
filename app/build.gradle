@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 24
     buildToolsVersion "23.0.3"
-
+    // ---------------------------------------------------------------------------------------------
     defaultConfig {
         applicationId "br.com.edsilfer.moviedb"
         minSdkVersion 18
@@ -16,13 +16,14 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
+    // ---------------------------------------------------------------------------------------------
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // ---------------------------------------------------------------------------------------------
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
@@ -62,9 +63,10 @@ dependencies {
     testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.1'
     testCompile 'org.powermock:powermock-module-junit4-rule:1.6.1'
     testCompile 'org.powermock:powermock-module-junit4:1.6.1'
+    testCompile "org.robolectric:robolectric:3.1.2"
 
     // OWN THIRD LIBRARIES =========================================================================
-    compile 'br.com.edsilfer:kiwi:1.0.14'
+    compile 'br.com.edsilfer:kotlin-support:1.0.0'
 
     // GOOGLE SUPPORT LIBRARIES DEPENDENCIED =======================================================
     compile "com.android.support:appcompat-v7:$support_version"
@@ -73,8 +75,8 @@ dependencies {
     compile "com.android.support:design:$support_version"
 
     // DAGGER 2 DEPENDENCIES =======================================================================
-    compile 'com.google.dagger:dagger:2.1'
-    kapt 'com.google.dagger:dagger-compiler:2.1'
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compile "com.google.dagger:dagger:$dagger_version"
     provided 'javax.annotation:jsr250-api:1.0'
 
     // KOTLIN DEPENDENCIES =========================================================================
@@ -114,3 +116,4 @@ buildscript {
 kapt {
     generateStubs = true
 }
+

@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.controller
+package br.com.edsilfer.moviedb.presenter
 
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -7,8 +7,8 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.View
+import br.com.edsilfer.kotlin_support.service.format
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.commons.format
 import com.mikepenz.aboutlibraries.Libs
 import com.mikepenz.aboutlibraries.LibsBuilder
 import com.squareup.picasso.Picasso

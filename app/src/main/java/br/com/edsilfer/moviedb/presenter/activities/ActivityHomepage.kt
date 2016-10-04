@@ -1,17 +1,17 @@
-package br.com.edsilfer.moviedb.controller.activities
+package br.com.edsilfer.moviedb.presenter.activities
 
 import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.MenuItem
-import br.com.edsilfer.bidder.util.hideCircularProgressBar
-import br.com.edsilfer.bidder.util.showCircularProgressBar
-import br.com.edsilfer.bidder.util.showErrorPopUp
-import br.com.edsilfer.kiwi.layout.RecyclerViewUtil
+import br.com.edsilfer.kotlin_support.service.hideCircularProgressBar
+import br.com.edsilfer.kotlin_support.service.initListItems
+import br.com.edsilfer.kotlin_support.service.showCircularProgressBar
+import br.com.edsilfer.kotlin_support.service.showErrorPopUp
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.controller.DrawerController
-import br.com.edsilfer.moviedb.controller.adapters.AdapterMovie
+import br.com.edsilfer.moviedb.presenter.DrawerController
+import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.JSONContract
 import br.com.edsilfer.moviedb.model.Movie
@@ -20,6 +20,7 @@ import br.com.edsilfer.moviedb.model.enums.EventCatalog
 import br.com.edsilfer.moviedb.service.JSONParser
 import br.com.edsilfer.moviedb.service.comm.Postman
 import kotlinx.android.synthetic.main.act_homepage.*
+import kotlinx.android.synthetic.main.rsc_homepage_content.*
 import org.jetbrains.anko.doAsync
 import org.json.JSONObject
 import javax.inject.Inject
@@ -31,8 +32,6 @@ class ActivityHomepage : ActivityTemplate() {
 
     @Inject
     lateinit var mPostman: Postman
-    @Inject
-    lateinit var mRecyclerViewService: RecyclerViewUtil
 
     // NETWORK EVENTS ==============================================================================
     val event0000Handler = object : TaskExecutor {
@@ -90,13 +89,14 @@ class ActivityHomepage : ActivityTemplate() {
                     results,
                     R.layout.rsc_util_movie_large
             )
+
             runOnUiThread {
-                mRecyclerViewService.initListItems(
+                movies.initListItems(
                         this@ActivityHomepage,
-                        R.id.movies,
                         LinearLayoutManager.VERTICAL,
                         null,
-                        adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
+                        adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>
+                )
             }
         }
     }
