@@ -54,7 +54,7 @@ Throughout the application it is common the need to have a reference to a Contex
 
 **_Adopted Design Patterns:_** Dependency Inversion Principle - 'D' letter from the S.O.L.I.D. principles.
 
-**Controller implementation**
+**Presenter Module**
 ----
 <p align="center">
   <img src="screenshots/blueprints/CD03 Controllers.png" align="center" width=500>
@@ -62,7 +62,7 @@ Throughout the application it is common the need to have a reference to a Contex
 
 The diagram above display the a generic implementation used in this project. The ActivityTemplate class provides common processing blocks for all app Activities - such as holding the information that tells if that Activity is in Foreground or not. Hence, all Activity implementation must descend of it. ActivityFactory is a place that centers all Activity setup, making easy to change some aspect of the application later on.
 
-**_Adopted Design Patterns:_** Template, Factory
+**_Adopted Design Patterns:_** MVP (Model, View, Presenter), Template, Factory
 
 Sequence Diagrams
 ---
@@ -77,6 +77,10 @@ Sequence Diagrams
 Tests
 ---
 The majority of this application effort is dedicated to map data between webservice's result and UI elements and, as there are many reliable libraries to do so, such as Gson and Kotlin internal features like 'data class', this work is facilitaded a lot. Because of that the tests were concentrated in automate the UI behaviour - using the test environment of Android with help of third libraries like Espresso. Mockito library is intended to be used to increase the Unit Test coverage of this application, it can make a good match with the already in use Dagger 2.
+
+<p align="center">
+  <img src="screenshots/blueprints/coverage.png" align="center" width=600>
+</p>
 
 Third-party libraries and special thanks
 ---
