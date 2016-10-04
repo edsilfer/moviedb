@@ -62,6 +62,10 @@ Throughout the application it is common the need to have a reference to a Contex
 
 The diagram above display the a generic implementation used in this project. The ActivityTemplate class provides common processing blocks for all app Activities - such as holding the information that tells if that Activity is in Foreground or not. Hence, all Activity implementation must descend of it. ActivityFactory is a place that centers all Activity setup, making easy to change some aspect of the application later on.
 
+One aspect of the Design Pattern present in the this module is not choosen by the programmer but, instead, implied by the way the Android environment was built. Tacking into consideration that MVP is a specialized form of MVC and, given that the XML layout files compound the view layer and the Activities, Fragments and Adapters performs the Presenter role -  as per described by Martin Fowler in his [article](http://www.martinfowler.com/eaaDev/uiArchs.html) about GUI Architecture, we can state that:
+
+Android GUI implementation follows the MVP Architecture Pattern with passive view (where the view layer has few code, enough only to map the Domain Object to the widget). In order to manipulate complex behavior on the screen, the mentioned presenters act directly on the view components, with no existance of an Presentation Model. It is also important to note that, the Observer Pattern, in which the Domain Object would be changed directly by the view object, leading to an event being raised on the presenter object, does not happens once this is a generic complex UI implementation and not the implementation of an OS widget.
+
 **_Adopted Design Patterns:_** MVP (Model, View, Presenter), Template, Factory
 
 Sequence Diagrams
@@ -76,7 +80,13 @@ Sequence Diagrams
 
 Tests
 ---
-The majority of this application effort is dedicated to map data between webservice's result and UI elements and, as there are many reliable libraries to do so, such as Gson and Kotlin internal features like 'data class', this work is facilitaded a lot. Because of that the tests were concentrated in automate the UI behaviour - using the test environment of Android with help of third libraries like Espresso. Mockito library is intended to be used to increase the Unit Test coverage of this application, it can make a good match with the already in use Dagger 2.
+The majority of this application effort is dedicated to map data between WebService's results and UI elements and, as there are many reliable libraries to do so, such as Gson and Kotlin internal features like 'data class', this work is facilitaded a lot. For an Android application we can define three different categories of tests:
+
+ - **Automated Tests**: reproduces the user interaction with the UI of the application. Needs to be performed on a device or emulator. In order to send commands to the application running instance, the library Espresso is largely used;
+ - **Instrumented Test**: unit tests that needs access to the OS resources which could be hard or impossible to mock. Uses the Instrumentations classes provided by Google in order to perform the tests. Just like the Automated Tests, they require a device or emulator in order to run;
+ - **Unit Test**: small tests intended to validate the behaviour of the smallest component of the software (can be a methods, class or even a larger component). Uses mock framewors in order to allow specific logic to be testes (Mockito and PowerMockito, mainly for mocking static methods);
+ 
+For this application, it was build Automated Tests that seeks to validate the correct fetch-and-filling of UI components from the WebServices's rquests and Unit Tests. Some tests made benefits of Roboletrict framework in order to allow tests to be performed locally instead of the need of a running device or emulator. This prepares this projecto to be integrated into a Continuous Integration Environment. Below there is a snapshot of the current test coverage for this project:
 
 <p align="center">
   <img src="screenshots/blueprints/coverage.png" align="center" width=600>
@@ -93,6 +103,8 @@ A full list of all third party libraries used throughout this project can be fou
  - [**Volley Plus**](https://developer.android.com/training/volley/index.html): Android library that provide usefull task to deal with webservices;
  - [**Kotlin**](https://kotlinlang.org/): Kotlin is a statically typed language that targets the JVM and JavaScript. It is a general-purpose language intended for industry use. It is developed by a team at JetBrains although it is an OSS language and has external contributors. Besides the imports present in the App gradle file, it is required to download the plugins for Android Studio in order to compile the .kt classes and make the project work;
  - [**Anko**](https://github.com/Kotlin/anko): Anko is a library which makes Android application development faster and easier. It makes your code clean and easy to read, and lets you forget about rough edges of Android SDK for Java.
+ - [**Mockito**](https://github.com/mockito/mockito): A popular framework for making mock objects in Java. [Open Source, MIT License];
+ - [**Robolectric**](https://github.com/robolectric/robolectric): Robolectric is a testing framework that de-fangs the Android SDK so you can test-drive the development of your Android app.
 
  
 License
