@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.service.comm
+package br.com.edsilfer.moviedb.infrastructure.retrofit
 
 import br.com.edsilfer.moviedb.model.ListMoviesResponseWrapper
 import br.com.edsilfer.moviedb.model.SearchMoviesResponseWrapper
@@ -10,7 +10,7 @@ import retrofit2.http.Query
  * Created by User on 19/10/2016.
  */
 
-interface TheMovieDBEndPoints {
+interface RestAPIEndPoint {
 
     @GET("movie/upcoming/")
     fun getMovies(): Call<ListMoviesResponseWrapper>

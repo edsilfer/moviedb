@@ -1,4 +1,4 @@
-package br.com.edsilfer.moviedb.service.comm
+package br.com.edsilfer.moviedb.infrastructure.retrofit
 
 import br.com.edsilfer.kotlin_support.service.log
 import br.com.edsilfer.moviedb.R

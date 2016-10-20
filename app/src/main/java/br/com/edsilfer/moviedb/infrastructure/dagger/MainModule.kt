@@ -1,7 +1,7 @@
 package br.com.edsilfer.moviedb.infrastructure.dagger
 
-import br.com.edsilfer.moviedb.service.comm.RetrofitManager
-import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
+import br.com.edsilfer.moviedb.infrastructure.retrofit.RetrofitManager
+import br.com.edsilfer.moviedb.infrastructure.retrofit.RestAPIEndPoint
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,11 +11,9 @@ import javax.inject.Singleton
  */
 @Module
 class MainModule() {
-
-    // COMM OFFICES ================================================================================
     @Provides
     @Singleton
-    fun provideWebAPI(): TheMovieDBEndPoints {
-        return RetrofitManager().getInstance().create(TheMovieDBEndPoints::class.java)
+    fun provideRestAPI(): RestAPIEndPoint {
+        return RetrofitManager().getInstance().create(RestAPIEndPoint::class.java)
     }
 }

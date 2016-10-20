@@ -13,7 +13,7 @@ import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
 import br.com.edsilfer.moviedb.model.SearchMoviesResponseWrapper
 import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
-import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
+import br.com.edsilfer.moviedb.infrastructure.retrofit.RestAPIEndPoint
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.act_search_movie.*
 import org.jetbrains.anko.doAsync
@@ -31,9 +31,7 @@ class ActivitySearchMovie : ActivityTemplate() {
     }
 
     @Inject
-    lateinit var mWebAPI: TheMovieDBEndPoints
-
-    private var mCall: Call<SearchMoviesResponseWrapper>? = null
+    lateinit var mWebAPI: RestAPIEndPoint
 
     // LIFECYCLE ===================================================================================
     init {
@@ -96,7 +94,6 @@ class ActivitySearchMovie : ActivityTemplate() {
         }
     }
 
-    // =============================================================================================
     private fun setQueryListener() {
         query_container.addTextChangedListener(object : QueryWatcher() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -105,8 +102,7 @@ class ActivitySearchMovie : ActivityTemplate() {
                     hideIndeterminateProgressBar()
                     showIndeterminateProgressBar()
 
-                    mCall = mWebAPI.searchMovies(query_container.text.toString())
-                    (mCall as Call<SearchMoviesResponseWrapper>).enqueue(object : Callback<SearchMoviesResponseWrapper> {
+                    mWebAPI.searchMovies(query_container.text.toString()).enqueue(object : Callback<SearchMoviesResponseWrapper> {
                         override fun onResponse(call: Call<SearchMoviesResponseWrapper>?, response: retrofit2.Response<SearchMoviesResponseWrapper>?) {
                             hideIndeterminateProgressBar()
                             loadResults(response!!.body()!!.results)

@@ -15,7 +15,7 @@ import br.com.edsilfer.moviedb.model.ListMoviesResponseWrapper
 import br.com.edsilfer.moviedb.model.Movie
 import br.com.edsilfer.moviedb.presenter.DrawerController
 import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
-import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
+import br.com.edsilfer.moviedb.infrastructure.retrofit.RestAPIEndPoint
 import kotlinx.android.synthetic.main.act_homepage.*
 import kotlinx.android.synthetic.main.rsc_homepage_content.*
 import org.jetbrains.anko.doAsync
@@ -29,7 +29,7 @@ import javax.inject.Inject
 class ActivityHomepage : ActivityTemplate() {
 
     @Inject
-    lateinit var mWebAPI: TheMovieDBEndPoints
+    lateinit var mRestAPI: RestAPIEndPoint
 
     // LIFECYCLE ===================================================================================
     init {
@@ -47,7 +47,7 @@ class ActivityHomepage : ActivityTemplate() {
         showCircularProgressBar()
         DrawerController(this).init()
 
-        mWebAPI.getMovies().enqueue(object : Callback<ListMoviesResponseWrapper> {
+        mRestAPI.getMovies().enqueue(object : Callback<ListMoviesResponseWrapper> {
             override fun onResponse(call: Call<ListMoviesResponseWrapper>?, response: retrofit2.Response<ListMoviesResponseWrapper>?) {
                 hideCircularProgressBar()
                 loadMovies(response!!.body()!!.results)
