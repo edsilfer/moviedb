@@ -2,10 +2,9 @@ package br.com.edsilfer.moviedb.infrastructure
 
 import android.app.Application
 import android.content.Context
-import br.com.edsilfer.bidder.infrastructure.dagger.MainModule
 import br.com.edsilfer.moviedb.infrastructure.dagger.DaggerMainComponent
 import br.com.edsilfer.moviedb.infrastructure.dagger.MainComponent
-import br.com.edsilfer.moviedb.service.comm.RestTemplate
+import br.com.edsilfer.moviedb.infrastructure.dagger.MainModule
 
 /**
  * High level class that provides wide context object for accessing app resource as well as starting
@@ -23,7 +22,7 @@ class App : Application() {
         val component: MainComponent?
             get() {
                 if (null == mComponent) {
-                    return DaggerMainComponent.builder().mainModule(MainModule(RestTemplate())).build()
+                    return DaggerMainComponent.builder().mainModule(MainModule()).build()
                 } else {
                     return mComponent
                 }
@@ -41,6 +40,6 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         mApp = this
-        mComponent = DaggerMainComponent.builder().mainModule(MainModule(RestTemplate())).build()
+        mComponent = DaggerMainComponent.builder().mainModule(MainModule()).build()
     }
 }

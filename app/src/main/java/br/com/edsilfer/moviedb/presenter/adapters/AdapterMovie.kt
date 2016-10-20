@@ -13,9 +13,9 @@ import android.widget.TextView
 import br.com.edsilfer.kotlin_support.service.log
 import br.com.edsilfer.moviedb.R
 import br.com.edsilfer.moviedb.commons.Constants
-import br.com.edsilfer.moviedb.presenter.activities.ActivityMovieDetails
 import br.com.edsilfer.moviedb.infrastructure.App
 import br.com.edsilfer.moviedb.model.Movie
+import br.com.edsilfer.moviedb.presenter.activities.ActivityMovieDetails
 import com.squareup.picasso.Picasso
 
 /**
@@ -49,12 +49,12 @@ class AdapterMovie(
 
     // =============================================================================================
     private fun setTitle(holder: MovieHolder, movie: Movie) {
-        holder.name.text = movie.original_title
+        holder.name.text = movie.originalTitle
     }
 
     private fun setCover(holder: MovieHolder, movie: Movie) {
         Picasso.with(mActivity)
-                .load(movie.cover_url)
+                .load(movie.coverUrl)
                 .fit()
                 .centerCrop()
                 .into(holder.cover, object : com.squareup.picasso.Callback {

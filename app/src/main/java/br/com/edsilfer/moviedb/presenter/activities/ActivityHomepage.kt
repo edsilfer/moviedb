@@ -10,19 +10,17 @@ import br.com.edsilfer.kotlin_support.service.initListItems
 import br.com.edsilfer.kotlin_support.service.showCircularProgressBar
 import br.com.edsilfer.kotlin_support.service.showErrorPopUp
 import br.com.edsilfer.moviedb.R
+import br.com.edsilfer.moviedb.infrastructure.App
+import br.com.edsilfer.moviedb.model.ListMoviesResponseWrapper
+import br.com.edsilfer.moviedb.model.Movie
 import br.com.edsilfer.moviedb.presenter.DrawerController
 import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
-import br.com.edsilfer.moviedb.infrastructure.App
-import br.com.edsilfer.moviedb.model.JSONContract
-import br.com.edsilfer.moviedb.model.Movie
-import br.com.edsilfer.moviedb.model.TaskExecutor
-import br.com.edsilfer.moviedb.model.enums.EventCatalog
-import br.com.edsilfer.moviedb.service.JSONParser
-import br.com.edsilfer.moviedb.service.comm.Postman
+import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
 import kotlinx.android.synthetic.main.act_homepage.*
 import kotlinx.android.synthetic.main.rsc_homepage_content.*
 import org.jetbrains.anko.doAsync
-import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
 import javax.inject.Inject
 
 /**
@@ -31,20 +29,7 @@ import javax.inject.Inject
 class ActivityHomepage : ActivityTemplate() {
 
     @Inject
-    lateinit var mPostman: Postman
-
-    // NETWORK EVENTS ==============================================================================
-    val event0000Handler = object : TaskExecutor {
-        override fun executeOnSuccessTask(payload: Any) {
-            hideCircularProgressBar()
-            loadMovies(JSONParser.Movie.list(JSONContract.ATTR_RESULTS, payload as JSONObject)!!)
-        }
-
-        override fun executeOnErrorTask(payload: Any) {
-            hideCircularProgressBar()
-            showErrorPopUp(R.string.str_error_list_upcoming_events)
-        }
-    }
+    lateinit var mWebAPI: TheMovieDBEndPoints
 
     // LIFECYCLE ===================================================================================
     init {
@@ -61,13 +46,18 @@ class ActivityHomepage : ActivityTemplate() {
         loadBackgroundImage(background)
         showCircularProgressBar()
         DrawerController(this).init()
-        mPostman.listMovies()
-    }
 
-    override fun setEventHandlers(): Map<EventCatalog, TaskExecutor>? {
-        return mapOf(
-                Pair(EventCatalog.e0000, event0000Handler)
-        )
+        mWebAPI.getMovies().enqueue(object : Callback<ListMoviesResponseWrapper> {
+            override fun onResponse(call: Call<ListMoviesResponseWrapper>?, response: retrofit2.Response<ListMoviesResponseWrapper>?) {
+                hideCircularProgressBar()
+                loadMovies(response!!.body()!!.results)
+            }
+
+            override fun onFailure(call: Call<ListMoviesResponseWrapper>?, t: Throwable?) {
+                hideCircularProgressBar()
+                showErrorPopUp(R.string.str_error_list_upcoming_events)
+            }
+        })
     }
 
     override fun getToolbar(): Toolbar? {

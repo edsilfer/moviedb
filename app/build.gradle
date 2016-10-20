@@ -93,13 +93,23 @@ dependencies {
     // THIRD PART ==================================================================================
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.googlecode.json-simple:json-simple:1.1'
-    compile 'com.google.code.gson:gson:2.4'
+    compile 'com.google.code.gson:gson:2.6.2'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.mikhaellopez:circularimageview:3.0.2'
     compile 'com.mikepenz:aboutlibraries:5.6.6@aar'
     compile "com.mikepenz:iconics-core:2.6.6@aar"
     compile 'com.mikepenz:fastadapter:1.5.6@aar'
     compile 'com.wang.avi:library:1.0.5'
+
+    // REACTIVEX ===================================================================================
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    // RETROFIT ====================================================================================
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
 }
 
 // *************************************************************************************************

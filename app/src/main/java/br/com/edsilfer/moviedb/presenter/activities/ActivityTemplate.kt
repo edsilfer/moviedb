@@ -14,9 +14,6 @@ import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import br.com.edsilfer.kotlin_support.service.log
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.model.TaskExecutor
-import br.com.edsilfer.moviedb.model.enums.EventCatalog
-import br.com.edsilfer.moviedb.service.comm.NotificationCenter
 import com.squareup.picasso.Picasso
 
 /**
@@ -46,7 +43,6 @@ abstract class ActivityTemplate : AppCompatActivity() {
             try {
                 setContentView(mSetup!!.contentView!!)
                 initToolbarBehavior()
-                registerForEvents()
             } catch (e: Exception) {
                 log("Could not start activity resources: ${e.message}")
                 e.printStackTrace()
@@ -59,11 +55,6 @@ abstract class ActivityTemplate : AppCompatActivity() {
         if (null != wrapper) {
             Picasso.with(this).load(R.drawable.img_background).fit().centerCrop().into(wrapper)
         }
-    }
-
-    public override fun onDestroy() {
-        unregisterForEvents()
-        super.onDestroy()
     }
 
     override fun onPause() {
@@ -84,30 +75,8 @@ abstract class ActivityTemplate : AppCompatActivity() {
         return true
     }
 
-    fun registerForEvents() {
-        val executors = setEventHandlers()
-        if (null != executors && executors.size > 0) {
-            for (event in executors.keys) {
-                NotificationCenter.RegistrationCenter.registerForEvent(event, executors[event]!!)
-            }
-        }
-    }
-
-    fun unregisterForEvents() {
-        val executors = this.setEventHandlers()
-        if (null != executors && executors.size > 0) {
-            for (key in executors.keys) {
-                NotificationCenter.RegistrationCenter.unregisterForEvent(key, executors[key]!!)
-            }
-        }
-    }
-
     fun isRunning(): Boolean {
         return this.isRunning!!
-    }
-
-    open fun setEventHandlers(): Map<EventCatalog, TaskExecutor>? {
-        return null
     }
 
     fun setLeftSlideAnimationForCalled() {

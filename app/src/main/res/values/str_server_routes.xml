@@ -3,6 +3,8 @@
     <!-- *************************************************************************************** -->
     <!-- BASE INFRASTRUCTURE  -->
     <!-- *************************************************************************************** -->
+    <string name="str_comm_base_url">https://api.themoviedb.org/3/</string>
+
     <string name="str_server_routes_base_protocol">https</string>
     <string name="str_server_routes_base_url">api.themoviedb.org</string>
     <string name="str_server_routes_base_image_url">https://image.tmdb.org/t/p/w500/</string>

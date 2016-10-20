@@ -2,12 +2,10 @@ package br.com.edsilfer.moviedb.infrastructure.dagger;
 
 import javax.inject.Singleton;
 
-import br.com.edsilfer.bidder.infrastructure.dagger.MainModule;
 import br.com.edsilfer.moviedb.presenter.activities.ActivityHomepage;
 import br.com.edsilfer.moviedb.presenter.activities.ActivityMovieDetails;
 import br.com.edsilfer.moviedb.presenter.activities.ActivitySearchMovie;
 import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie;
-import br.com.edsilfer.moviedb.service.comm.Postman;
 import dagger.Component;
 
 /**
@@ -29,9 +27,6 @@ public interface MainComponent {
 
     // ADAPTERS ====================================================================================
     void inject(AdapterMovie adapterMovie);
-
-    // COMM ========================================================================================
-    void inject(Postman postman);
 }
 
 

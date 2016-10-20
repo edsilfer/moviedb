@@ -1,8 +1,7 @@
-package br.com.edsilfer.bidder.infrastructure.dagger
+package br.com.edsilfer.moviedb.infrastructure.dagger
 
-import br.com.edsilfer.moviedb.service.comm.MovieOffice
-import br.com.edsilfer.moviedb.service.comm.Postman
-import br.com.edsilfer.moviedb.service.comm.RestTemplate
+import br.com.edsilfer.moviedb.service.comm.RetrofitManager
+import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -11,18 +10,12 @@ import javax.inject.Singleton
  * Provides the instantiation for the managed classes of dagger 2
  */
 @Module
-class MainModule(private val mRequestService: RestTemplate) {
+class MainModule() {
 
     // COMM OFFICES ================================================================================
     @Provides
     @Singleton
-    fun providePostman(): Postman {
-        return Postman(mRequestService)
-    }
-
-    @Provides
-    @Singleton
-    fun provideMovieOffice(): MovieOffice {
-        return MovieOffice(mRequestService)
+    fun provideWebAPI(): TheMovieDBEndPoints {
+        return RetrofitManager().getInstance().create(TheMovieDBEndPoints::class.java)
     }
 }

@@ -7,22 +7,18 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.text.Editable
 import android.text.TextWatcher
-import android.transition.Slide
-import android.view.Gravity
 import br.com.edsilfer.kotlin_support.service.*
 import br.com.edsilfer.moviedb.R
-import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
 import br.com.edsilfer.moviedb.infrastructure.App
-import br.com.edsilfer.moviedb.model.JSONContract
 import br.com.edsilfer.moviedb.model.Movie
-import br.com.edsilfer.moviedb.model.TaskExecutor
-import br.com.edsilfer.moviedb.model.enums.EventCatalog
-import br.com.edsilfer.moviedb.service.JSONParser
-import br.com.edsilfer.moviedb.service.comm.Postman
+import br.com.edsilfer.moviedb.model.SearchMoviesResponseWrapper
+import br.com.edsilfer.moviedb.presenter.adapters.AdapterMovie
+import br.com.edsilfer.moviedb.service.comm.TheMovieDBEndPoints
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.act_search_movie.*
 import org.jetbrains.anko.doAsync
-import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
 import javax.inject.Inject
 
 /**
@@ -35,23 +31,9 @@ class ActivitySearchMovie : ActivityTemplate() {
     }
 
     @Inject
-    lateinit var mPostman: Postman
+    lateinit var mWebAPI: TheMovieDBEndPoints
 
-    // NETWORK EVENTS ==============================================================================
-    val event0001Handler = object : TaskExecutor {
-        override fun executeOnSuccessTask(payload: Any) {
-            hideIndeterminateProgressBar()
-            doAsync {
-                loadResults(JSONParser.Movie.list(JSONContract.ATTR_RESULTS, payload as JSONObject)!!)
-            }
-        }
-
-        override fun executeOnErrorTask(payload: Any) {
-            log("Search movie failed")
-            hideIndeterminateProgressBar()
-            showErrorPopUp(R.string.str_error_search_movie_failed)
-        }
-    }
+    private var mCall: Call<SearchMoviesResponseWrapper>? = null
 
     // LIFECYCLE ===================================================================================
     init {
@@ -72,12 +54,6 @@ class ActivitySearchMovie : ActivityTemplate() {
         return toolbar
     }
 
-    override fun setEventHandlers(): Map<EventCatalog, TaskExecutor>? {
-        return mapOf(
-                Pair(EventCatalog.e0001, event0001Handler)
-        )
-    }
-
     override fun onNavigationClicked() {
         if ("" == query_container.text.toString()) {
             finish()
@@ -92,29 +68,31 @@ class ActivitySearchMovie : ActivityTemplate() {
     }
 
     private fun loadResults(results: List<Movie>) {
-        if (results.size > 0) {
-            movies.visibility = RecyclerView.VISIBLE
-            result_not_found_wrapper.visibility = CardView.GONE
-            doAsync {
-                val adapter = AdapterMovie(
-                        this@ActivitySearchMovie,
-                        results,
-                        R.layout.rsc_util_movie_small
-                )
+        doAsync {
+            if (results.size > 0) {
+                movies.visibility = RecyclerView.VISIBLE
+                result_not_found_wrapper.visibility = CardView.GONE
+                doAsync {
+                    val adapter = AdapterMovie(
+                            this@ActivitySearchMovie,
+                            results,
+                            R.layout.rsc_util_movie_small
+                    )
 
-                runOnUiThread {
-                    result_not_found_wrapper.visibility = CardView.GONE
-                    movies.initListItems(
-                            this@ActivitySearchMovie as AppCompatActivity,
-                            LinearLayoutManager.VERTICAL,
-                            null,
-                            adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
+                    runOnUiThread {
+                        result_not_found_wrapper.visibility = CardView.GONE
+                        movies.initListItems(
+                                this@ActivitySearchMovie as AppCompatActivity,
+                                LinearLayoutManager.VERTICAL,
+                                null,
+                                adapter as RecyclerView.Adapter<RecyclerView.ViewHolder>)
+                    }
                 }
+            } else {
+                movies.visibility = RecyclerView.GONE
+                result_not_found_wrapper.visibility = CardView.VISIBLE
+                result_not_found.text = result_not_found.text.toString().replace(QUERY_PLACEHOLDER, query_container.text.toString())
             }
-        } else {
-            movies.visibility = RecyclerView.GONE
-            result_not_found_wrapper.visibility = CardView.VISIBLE
-            result_not_found.text = result_not_found.text.toString().replace(QUERY_PLACEHOLDER, query_container.text.toString())
         }
     }
 
@@ -125,9 +103,21 @@ class ActivitySearchMovie : ActivityTemplate() {
                 toggleNavigationIcon(query_container.text.toString())
                 if ("" != query_container.text.toString()) {
                     hideIndeterminateProgressBar()
-                    mPostman.cancelRequests()
                     showIndeterminateProgressBar()
-                    mPostman.searchMovie(query_container.text.toString())
+
+                    mCall = mWebAPI.searchMovies(query_container.text.toString())
+                    (mCall as Call<SearchMoviesResponseWrapper>).enqueue(object : Callback<SearchMoviesResponseWrapper> {
+                        override fun onResponse(call: Call<SearchMoviesResponseWrapper>?, response: retrofit2.Response<SearchMoviesResponseWrapper>?) {
+                            hideIndeterminateProgressBar()
+                            loadResults(response!!.body()!!.results)
+                        }
+
+                        override fun onFailure(call: Call<SearchMoviesResponseWrapper>?, t: Throwable?) {
+                            log("error trying to perform movie search ${t!!.message!!}")
+                            hideIndeterminateProgressBar()
+                            showErrorPopUp(R.string.str_error_list_upcoming_events)
+                        }
+                    })
                 } else {
                     loadResults(listOf<Movie>())
                     result_not_found_wrapper.visibility = CardView.GONE
