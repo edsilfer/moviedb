@@ -1,11 +1,48 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!-- MAIN APPLICATION THEME ================================================================ -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:background">#33000000</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation</item>
+    </style>
+
+    <!-- TEXT HANGERS ========================================================================== -->
+    <style name="TextHangerDark" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/colorTextDark</item>
+        <item name="colorAccent">@color/colorTextDark</item>
+        <item name="colorControlNormal">@color/colorTextDark</item>
+        <item name="colorControlActivated">@color/colorTextDark</item>
+    </style>
+
+    <style name="TextHangerLight" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">@color/colorTextLight</item>
+        <item name="colorAccent">@color/colorTextLight</item>
+        <item name="colorControlNormal">@color/colorTextLight</item>
+        <item name="colorControlActivated">@color/colorTextLight</item>
+    </style>
+
+    <!-- OTHER ================================================================================= -->
+    <style name="CustomRatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/colorRatingBarNormal</item>
+        <item name="colorControlActivated">@color/colorRatingBarHighlighted</item>
     </style>
 
 </resources>

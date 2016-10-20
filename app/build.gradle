@@ -2,37 +2,128 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+// *************************************************************************************************
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
-
+    buildToolsVersion "23.0.3"
+    // ---------------------------------------------------------------------------------------------
     defaultConfig {
         applicationId "br.com.edsilfer.moviedb"
-        minSdkVersion 15
+        minSdkVersion 18
         targetSdkVersion 24
+        multiDexEnabled true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
+    // ---------------------------------------------------------------------------------------------
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    // ---------------------------------------------------------------------------------------------
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
+// *************************************************************************************************
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // INSTRUMENTATION TESTS DEPENDENCIES ==========================================================
+    androidTestCompile 'com.android.support:support-annotations:24.2.1'
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'org.hamcrest:hamcrest-library:1.3'
+
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    androidTestCompile('com.android.support.test.espresso:espresso-contrib:2.2.2') {
+        exclude module: 'support-annotations'
+        exclude module: 'support-v4'
+        exclude module: 'support-v13'
+        exclude module: 'recyclerview-v7'
+        exclude module: 'appcompat-v7'
+        exclude module: 'design'
+    }
+    androidTestCompile('com.android.support.test.uiautomator:uiautomator-v18:2.1.2') {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
 
+    // TEST DEPENDENCIES ===========================================================================
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.json:json:20140107'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile('org.powermock:powermock-api-mockito:1.6.5') {
+        exclude group: 'org.mockito', module: 'mockito-core'
+    }
+    testCompile 'org.powermock:powermock-module-junit4-rule-agent:1.6.1'
+    testCompile 'org.powermock:powermock-module-junit4-rule:1.6.1'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.1'
+    testCompile "org.robolectric:robolectric:3.1.2"
+
+    // OWN THIRD LIBRARIES =========================================================================
+    compile 'br.com.edsilfer:kotlin-support:1.0.0'
+
+    // GOOGLE SUPPORT LIBRARIES DEPENDENCIED =======================================================
     compile "com.android.support:appcompat-v7:$support_version"
     compile "com.android.support:recyclerview-v7:$support_version"
     compile "com.android.support:cardview-v7:$support_version"
     compile "com.android.support:design:$support_version"
 
-    testCompile 'junit:junit:4.12'
+    // DAGGER 2 DEPENDENCIES =======================================================================
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+    compile "com.google.dagger:dagger:$dagger_version"
+    provided 'javax.annotation:jsr250-api:1.0'
+
+    // KOTLIN DEPENDENCIES =========================================================================
+    compile "com.android.support:appcompat-v7:$support_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    // ANKO DEPENDENCIES ---------------------------------------------------------------------------
+    compile "org.jetbrains.anko:anko-common:$anko_version"
+    compile "org.jetbrains.anko:anko-sdk15:$anko_version"
+    compile "org.jetbrains.anko:anko-support-v4:$anko_version"
+    compile "org.jetbrains.anko:anko-appcompat-v7:$anko_version"
+
+    // THIRD PART ==================================================================================
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.googlecode.json-simple:json-simple:1.1'
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.mikhaellopez:circularimageview:3.0.2'
+    compile 'com.mikepenz:aboutlibraries:5.6.6@aar'
+    compile "com.mikepenz:iconics-core:2.6.6@aar"
+    compile 'com.mikepenz:fastadapter:1.5.6@aar'
+    compile 'com.wang.avi:library:1.0.5'
+
+    // REACTIVEX ===================================================================================
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+
+    // RETROFIT ====================================================================================
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+
 }
+
+// *************************************************************************************************
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlin_version"
+    }
+}
+
+// *************************************************************************************************
+kapt {
+    generateStubs = true
+}
+

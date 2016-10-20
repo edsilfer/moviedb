@@ -1,0 +1,7 @@
+<resources>
+    <string name="str_act_movie_dtls_label">Chosen Movie</string>
+
+    <!-- MOVIE OVERVIEW -->
+    <string name="str_act_movie_dtls_label_overview">Overview</string>
+    <string name="str_act_movie_dtls_txt_overview_not_found">Overview not found!</string>
+</resources>

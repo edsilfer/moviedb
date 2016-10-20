@@ -1,13 +1,43 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.edsilfer.moviedb">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".infrastructure.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-    </application>
+        <!-- LAUNCHER ACTIVITY LOGIN =========================================================== -->
+        <activity
+            android:name=".presenter.activities.ActivityHomepage"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
+        <!-- ACTIVITY MOVIE DETAILS ============================================================ -->
+        <activity
+            android:name=".presenter.activities.ActivityMovieDetails"
+            android:screenOrientation="portrait"
+            android:theme="@style/NoActionBar" />
+
+        <!-- ACTIVITY SEARCH MOVIE  ============================================================ -->
+        <activity
+            android:name=".presenter.activities.ActivitySearchMovie"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+
+        <!-- ACTIVITY ABOUT ==================================================================== -->
+        <activity
+            android:name=".presenter.activities.ActivityAbout"
+            android:screenOrientation="portrait" />
+    </application>
 </manifest>

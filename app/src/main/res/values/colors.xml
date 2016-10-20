@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- APP MAIN COLORS ======================================================================= -->
+    <color name="colorPrimary">#191A17</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#FAFAFA</color>
+
+    <!-- TEXT COLORS =========================================================================== -->
+    <color name="colorTextDark">#424242</color>
+    <color name="colorTextLight">#FFF</color>
+    <color name="colorTextShadowDark">#000</color>
+    <color name="colorTextShadowLight">#FFF</color>
+
+    <!-- OTHER ================================================================================= -->
+    <color name="colorRatingBarNormal">#ffd700</color>
+    <color name="colorRatingBarHighlighted">#e5c100</color>
 </resources>
